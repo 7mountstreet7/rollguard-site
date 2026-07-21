@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RollGuard — Find what's hiding in your camera roll</title>
+<meta name="description" content="RollGuard scans your iPhone photos for passports, licences, payment cards, screenshot secrets and sensitive images — entirely on your device. No cloud, no account, no subscription.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#3d514c;
+    --paper:#EEF2F0;
+    --card:#FFFFFF;
+    --teal:#0F6E56;
+    --teal-deep:#0A4E3E;
+    --mint:#DCEEE7;
+    --flag:#B1502C;
+    --flag-bg:#F7E7DF;
+    --line:#D8DFDC;
+    --radius:14px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal-deep);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  section{padding:96px 0;}
+  section.tight{padding:64px 0;}
+
+  nav{
+    max-width:920px;margin:0 auto;padding:28px 24px 0;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  .navlinks a{color:var(--ink-soft);text-decoration:none;}
+  .navlinks a:hover{color:var(--teal-deep);}
+
+  .hero{padding:72px 0 40px;}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--teal-deep);
+    background:var(--mint);display:inline-block;padding:5px 12px;border-radius:999px;
+    margin-bottom:22px;letter-spacing:0.02em;
+  }
+  h1{
+    font-family:var(--font-display);font-weight:700;
+    font-size:clamp(34px, 5.2vw, 54px);line-height:1.06;letter-spacing:-0.02em;
+    margin:0 0 22px;max-width:11ch;
+  }
+  .lede{font-size:18px;color:var(--ink-soft);max-width:46ch;margin:0 0 34px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    font-family:var(--font-body);font-weight:600;font-size:15px;
+    padding:13px 22px;border-radius:10px;text-decoration:none;display:inline-block;
+    border:1.5px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{background:var(--teal-deep);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);}
+  .cta-note{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);}
+
+  .grid-demo{margin-top:64px;}
+  .grid-demo-label{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
+    margin-bottom:14px;display:flex;justify-content:space-between;
+  }
+  .tiles{
+    display:grid;grid-template-columns:repeat(8,1fr);gap:8px;
+  }
+  .tile{
+    aspect-ratio:1;border-radius:8px;position:relative;overflow:hidden;
+    cursor:pointer;outline:none;border:none;padding:0;
+  }
+  .tile:focus-visible{box-shadow:0 0 0 3px var(--teal);}
+  .tile .cover{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    transition:transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .tile .redact{
+    position:absolute;inset:0;background:var(--flag);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .tile .label{
+    position:absolute;inset:0;background:var(--flag-bg);color:var(--flag);
+    font-family:var(--font-mono);font-size:8.5px;font-weight:500;text-align:center;
+    display:flex;align-items:center;justify-content:center;padding:4px;line-height:1.25;
+    opacity:0;transition:opacity 0.3s ease 0.15s;
+  }
+  .tile.flagged .redact{transform:translateY(0);}
+  .tile.flagged:hover .redact,
+  .tile.flagged:focus-visible .redact{transform:translateY(100%);}
+  .tile.flagged:hover .label,
+  .tile.flagged:focus-visible .label{opacity:1;}
+  .tile.plain .cover{background:var(--card);border:1px solid var(--line);}
+  @media (prefers-reduced-motion: reduce){
+    .tile .redact, .tile .label{transition:none;}
+  }
+  @media (max-width:640px){
+    .tiles{grid-template-columns:repeat(6,1fr);}
+  }
+
+  .log-card{
+    background:var(--ink);border-radius:var(--radius);padding:30px 32px;
+    font-family:var(--font-mono);font-size:14px;color:#DDEAE5;
+  }
+  .log-line{display:flex;gap:16px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .log-line:last-child{border-bottom:none;}
+  .log-tag{color:var(--mint);flex-shrink:0;width:150px;}
+  .log-desc{color:#9FB3AC;}
+  .cursor{display:inline-block;width:7px;height:14px;background:var(--mint);margin-left:6px;
+    animation:blink 1s steps(1) infinite;vertical-align:-2px;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){.cursor{animation:none;}}
+  @media (max-width:640px){
+    .log-line{flex-direction:column;gap:2px;}
+    .log-tag{width:auto;}
+  }
+
+  h2{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.4vw,32px);
+    letter-spacing:-0.01em;margin:0 0 14px;}
+  .section-sub{color:var(--ink-soft);max-width:52ch;margin:0 0 40px;font-size:16px;}
+
+  .privacy-row{display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
+  .device{flex-shrink:0;width:120px;height:220px;border:2.5px solid var(--ink);border-radius:22px;
+    position:relative;}
+  .device::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:36px;height:4px;border-radius:2px;background:var(--ink);}
+  .device::after{content:'⟲';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:34px;color:var(--teal);}
+  .privacy-text{flex:1;min-width:260px;}
+  .privacy-text p{color:var(--ink-soft);font-size:16px;}
+  .privacy-text strong{color:var(--ink);}
+
+  .price-card{
+    background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);
+    padding:40px;max-width:460px;
+  }
+  .price-head{font-family:var(--font-display);font-weight:700;font-size:22px;margin:0 0 6px;}
+  .price-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 24px;}
+  .price-list{list-style:none;margin:0;padding:0;}
+  .price-list li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--ink-soft);}
+  .price-list li:first-child{border-top:none;}
+  .price-list li::before{content:'—';color:var(--teal);flex-shrink:0;}
+
+  .faq-item{border-top:1px solid var(--line);padding:22px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-q{font-family:var(--font-display);font-weight:700;font-size:16.5px;margin:0 0 8px;}
+  .faq-a{color:var(--ink-soft);font-size:15px;margin:0;max-width:60ch;}
+
+  .support-card{
+    background:var(--mint);border-radius:var(--radius);padding:36px 40px;
+  }
+  .mail-link{
+    font-family:var(--font-mono);font-size:16px;color:var(--teal-deep);text-decoration:none;
+    font-weight:500;
+  }
+  .mail-link:hover{text-decoration:underline;}
+
+  footer{padding:48px 0 64px;border-top:1px solid var(--line);margin-top:24px;}
+  .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-size:13.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">Roll<span>Guard</span></a>
+  <div class="navlinks">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#support">Support</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <span class="eyebrow">iOS · fully on-device</span>
+    <h1>Find what's hiding in your camera roll.</h1>
+    <p class="lede">RollGuard scans your photos for passports, driver's licences, payment cards, and old password screenshots — without any of it ever leaving your phone.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#pricing">See how it works</a>
+      <a class="btn btn-ghost" href="mailto:support@rollguard.app">Ask a question</a>
+    </div>
+    <p class="cta-note" style="margin-top:14px;">Launching soon on the App Store.</p>
+
+    <div class="grid-demo">
+      <div class="grid-demo-label">
+        <span>your camera roll</span>
+        <span>hover a tile</span>
+      </div>
+      <div class="tiles" id="tiles"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>Four things it looks for</h2>
+    <p class="section-sub">Every scan runs the same four checks, on-device, and reports back plainly — no invented accuracy scores, no vague warnings.</p>
+    <div class="log-card">
+      <div class="log-line"><span class="log-tag">identity documents</span><span class="log-desc">passports, driver's licences, Medicare, TFN</span></div>
+      <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
+      <div class="log-line"><span class="log-tag">screenshot secrets</span><span class="log-desc">passwords, OTP codes, banking, seed phrases</span></div>
+      <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2>Nothing leaves your phone</h2>
+    <div class="privacy-row">
+      <div class="device" aria-hidden="true"></div>
+      <div class="privacy-text">
+        <p>RollGuard doesn't have a server. There's no account to create, no photo ever uploaded, nothing sent anywhere for analysis. Every scan — and every result — stays <strong>on the device in your hand</strong>.</p>
+        <p>Once a scan finds something, you decide what happens to it: keep it, hide it from the app's own view, or delete it from your library. RollGuard never acts on your photos without you telling it to.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="tight">
+    <h2>One price. No subscription, ever.</h2>
+    <p class="section-sub">Free scan of your last 30 days shows you exactly what RollGuard finds — real results, not a demo. Unlock your full library whenever you're ready.</p>
+    <div class="price-card">
+      <p class="price-head">RollGuard Pro</p>
+      <p class="price-sub">A single one-time purchase. Price shown on the App Store in your local currency.</p>
+      <ul class="price-list">
+        <li>Unlocks scanning your entire photo library, not just the last 30 days</li>
+        <li>Unlocks every Moments preset — work phone, selling, family handover, travel</li>
+        <li>Pay once, use forever — no renewals, no reminders</li>
+      </ul>
+    </div>
+    <p style="margin-top:22px;color:var(--ink-soft);font-size:14.5px;">The free version already runs a genuinely complete scan of your last 30 days, every category, re-scannable anytime.</p>
+  </section>
+
+  <section class="tight">
+    <h2>A few honest answers</h2>
+    <div class="faq-item">
+      <p class="faq-q">Does RollGuard ever upload my photos?</p>
+      <p class="faq-a">No. There's no server for it to talk to. Scanning, matching, and storing results all happen using your iPhone's own processor.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What does "hide" actually do?</p>
+      <p class="faq-a">It removes an item from RollGuard's own review queue without touching your photo library. "Delete" is the only action that removes the photo itself, and it always asks first.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Is this a subscription?</p>
+      <p class="faq-a">No. RollGuard Pro is a single one-time purchase that unlocks everything, permanently.</p>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>Support</h2>
+    <div class="support-card">
+      <p style="margin:0 0 14px;color:var(--ink-soft);">Need help, have feedback, or found a bug? Get in touch directly:</p>
+      <a class="mail-link" href="mailto:support@rollguard.app">support@rollguard.app</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-row">
+      <span>© 2026 RollGuard · <a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Terms</a></span>
+      <span>RollGuard processes everything on your device. Your photos never leave your phone.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const flaggedIndexes = new Set([3, 9, 14, 20]);
+  const labels = {
+    3: 'sensitive image detected',
+    9: 'payment card detected',
+    14: 'password screenshot',
+    20: 'identity document'
+  };
+  const tones = ['#CBD9D3','#D9CFC0','#C9D6DE','#DCCFD6','#CFDACB','#D2D2C4'];
+  const container = document.getElementById('tiles');
+  for (let i = 0; i < 24; i++) {
+    const isFlagged = flaggedIndexes.has(i);
+    const tile = document.createElement('button');
+    tile.className = 'tile ' + (isFlagged ? 'flagged' : 'plain');
+    tile.setAttribute('aria-label', isFlagged ? labels[i] : 'photo');
+    const cover = document.createElement('div');
+    cover.className = 'cover';
+    cover.style.background = tones[i % tones.length];
+    tile.appendChild(cover);
+    if (isFlagged) {
+      const redact = document.createElement('div');
+      redact.className = 'redact';
+      tile.appendChild(redact);
+      const label = document.createElement('div');
+      label.className = 'label';
+      label.textContent = labels[i];
+      tile.appendChild(label);
+    }
+    container.appendChild(tile);
+  }
+</script>
+
+</body>
+</html>
