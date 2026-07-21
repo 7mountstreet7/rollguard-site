@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — RollGuard</title>
+<meta name="description" content="RollGuard's privacy policy — what the app does and doesn't collect, and how on-device scanning works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#3d514c;
+    --paper:#EEF2F0;
+    --card:#FFFFFF;
+    --teal:#0F6E56;
+    --teal-deep:#0A4E3E;
+    --mint:#DCEEE7;
+    --line:#D8DFDC;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal-deep);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 96px;}
+  nav{max-width:720px;margin:0 auto;padding:28px 24px 0;}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .updated{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
+    background:var(--mint);display:inline-block;padding:5px 12px;border-radius:999px;
+    margin:40px 0 18px;
+  }
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4.4vw,38px);
+    letter-spacing:-0.02em;margin:0 0 8px;}
+  .lede{color:var(--ink-soft);font-size:16px;max-width:56ch;margin:0 0 48px;}
+  h2{font-family:var(--font-display);font-weight:700;font-size:19px;margin:44px 0 12px;}
+  p{color:var(--ink-soft);font-size:15.5px;margin:0 0 14px;}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;margin:20px 0;}
+  .card p{margin:0;}
+  ul{color:var(--ink-soft);font-size:15.5px;padding-left:20px;margin:0 0 14px;}
+  li{margin-bottom:6px;}
+  .mail-link{font-family:var(--font-mono);font-size:15.5px;color:var(--teal-deep);text-decoration:none;font-weight:500;}
+  .mail-link:hover{text-decoration:underline;}
+  footer{padding:40px 0 0;border-top:1px solid var(--line);margin-top:56px;
+    font-size:13.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav><a class="brand" href="/">Roll<span>Guard</span></a></nav>
+
+<div class="wrap">
+  <span class="updated">last updated · 20 July 2026</span>
+  <h1>Privacy policy</h1>
+  <p class="lede">The short version: RollGuard doesn't have a server, doesn't have accounts, and never sees your photos. Here's the detail behind that claim.</p>
+
+  <h2>What RollGuard scans, and where</h2>
+  <p>RollGuard scans photos in your iPhone's camera roll to look for identity documents, payment card numbers, screenshots containing passwords or codes, and — on iOS 17 and later, only if you've enabled it in Settings — sensitive images, using Apple's own on-device Sensitive Content Analysis.</p>
+  <p>All of this scanning happens using your iPhone's own processor. RollGuard has no server to send photos to, and no photo, thumbnail, or scan result is ever transmitted off your device.</p>
+
+  <h2>Accounts and identity</h2>
+  <p>RollGuard has no account system. There's no sign-up, no login, and no email address collected to use the app. Nothing about your usage of the app is tied to your identity.</p>
+
+  <h2>What is stored, and where</h2>
+  <div class="card">
+    <p>Scan results (which photos were flagged, and in which category) are stored locally on your device only, in a local database. Deleting the app deletes this data. Nothing is backed up to a RollGuard server, because none exists.</p>
+  </div>
+
+  <h2>Purchases</h2>
+  <p>RollGuard Pro is a one-time in-app purchase, processed by Apple through StoreKit. To handle that purchase and confirm entitlement, RollGuard uses a third-party service called RevenueCat.</p>
+  <p>RevenueCat's SDK requires declaring two categories of data under Apple's App Privacy framework — <strong>Analytics</strong> and <strong>App Functionality</strong> — related to processing your purchase and confirming your entitlement to Pro features. This data is <strong>not linked to your identity</strong>: RollGuard has no accounts, and no personal profile is created or maintained. You can read RevenueCat's own privacy policy for more detail on how they handle this data.</p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li><strong>Keep</strong> leaves a photo untouched, and clears it from RollGuard's review queue.</li>
+    <li><strong>Hide</strong> removes an item from RollGuard's own review queue without touching your photo library at all.</li>
+    <li><strong>Delete</strong> is the only action that removes the photo itself — and it always asks Apple's system permission dialog first, the same as deleting any photo manually.</li>
+  </ul>
+  <p>RollGuard never takes any of these actions automatically or without you choosing them.</p>
+
+  <h2>Children's privacy</h2>
+  <p>RollGuard is rated 18+ on the App Store. This rating reflects the nature of what the app is designed to detect (including sensitive imagery), not that the app displays such content itself — RollGuard shows no images beyond what's already in your own camera roll, blurred or unblurred entirely by your own iOS photo settings.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the "last updated" date at the top of this page will change too. Continued use of RollGuard after an update means you accept the revised policy.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or how RollGuard handles your data:</p>
+  <a class="mail-link" href="mailto:support@rollguard.app">support@rollguard.app</a>
+
+  <p style="margin-top:24px;"><a href="/terms.html">Read the terms &amp; legal page →</a></p>
+
+  <footer>
+    © 2026 RollGuard — <a href="/">back to home</a>
+  </footer>
+</div>
+
+</body>
+</html>
