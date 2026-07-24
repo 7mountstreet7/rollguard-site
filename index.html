@@ -147,6 +147,13 @@
   .privacy-text p{color:var(--ink-soft);font-size:16px;}
   .privacy-text strong{color:var(--ink);}
 
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;}
+  .why-card{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:26px 28px;}
+  .why-icon{font-size:22px;margin-bottom:10px;display:block;}
+  .why-title{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0 0 8px;}
+  .why-body{color:var(--ink-soft);font-size:14.5px;margin:0;}
+  @media (max-width:640px){.why-grid{grid-template-columns:1fr;}}
+
   .price-card{
     background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);
     padding:40px;max-width:460px;
@@ -234,6 +241,33 @@
     </div>
   </section>
 
+  <section class="tight">
+    <h2>Why this matters</h2>
+    <p class="section-sub">Same scan, same on-device engine — these are just the moments people actually reach for it.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">💼</span>
+        <p class="why-title">Handing over a work phone</p>
+        <p class="why-body">IT policies, MDM tools, and shared backups can all reach your camera roll. Run a sweep before it's someone else's to manage.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📱</span>
+        <p class="why-title">Selling or trading in</p>
+        <p class="why-body">Backups carry everything forward, even what you meant to delete years ago. Check before you back up and hand it off.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">👨‍👩‍👧</span>
+        <p class="why-title">Handing your phone to family</p>
+        <p class="why-body">Kids playing games, grandparents scrolling photos — a quick sweep first means nothing sensitive is one swipe away.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">✈️</span>
+        <p class="why-title">Before you travel</p>
+        <p class="why-body">Border checks, lost phones, hotel WiFi — travel light on sensitive documents and old passwords, not just photos.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="pricing" class="tight">
     <h2>One price. No subscription, ever.</h2>
     <p class="section-sub">Free scan of your last 30 days shows you exactly what RollGuard finds — real results, not a demo. Unlock your full library whenever you're ready.</p>
@@ -242,7 +276,7 @@
       <p class="price-sub">A single one-time purchase. Price shown on the App Store in your local currency.</p>
       <ul class="price-list">
         <li>Unlocks scanning your entire photo library, not just the last 30 days</li>
-        <li>Unlocks every Moments preset — work phone, selling, family handover, travel</li>
+        <li>Unlocks full control — choose exactly what to scan for, every time</li>
         <li>Pay once, use forever — no renewals, no reminders</li>
       </ul>
     </div>
