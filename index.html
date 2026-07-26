@@ -227,9 +227,9 @@
     <h2>Four things it looks for</h2>
     <p class="section-sub">Every scan runs the same four checks, on-device, and reports back plainly — no invented accuracy scores, no vague warnings.</p>
     <div class="log-card">
-      <div class="log-line"><span class="log-tag">identity documents</span><span class="log-desc">passports, driver's licences, Medicare, TFN</span></div>
+      <div class="log-line"><span class="log-tag">identity documents</span><span class="log-desc">passports, driver's licences, national ID cards — plus Medicare, TFN</span></div>
       <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
-      <div class="log-line"><span class="log-tag">screenshot secrets</span><span class="log-desc">passwords, OTP codes, banking, seed phrases</span></div>
+      <div class="log-line"><span class="log-tag">secrets & credentials</span><span class="log-desc">passwords, OTP codes, banking, seed phrases, WiFi and router credentials</span></div>
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
     </div>
   </section>
@@ -325,7 +325,7 @@
   const labels = {
     3: 'sensitive image detected',
     9: 'payment card detected',
-    14: 'password screenshot',
+    14: 'credential detected',
     20: 'identity document'
   };
   const tones = ['#CBD9D3','#D9CFC0','#C9D6DE','#DCCFD6','#CFDACB','#D2D2C4'];
