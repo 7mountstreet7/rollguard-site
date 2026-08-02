@@ -77,11 +77,11 @@
 
   <h2>What is stored, and where</h2>
   <div class="card">
-    <p>Scan results (which photos were flagged, and in which category) are stored locally on your device only, in a local database. Deleting the app deletes this data. Nothing is backed up to a RollGuard server, because none exists.</p>
+    <p>Scan results are stored locally on your device only, in a local database — including which photos were flagged, which category (identity document, payment card, and so on), the specific text or detail that triggered the flag, and your decision (kept, hidden, or deleted). Nothing is backed up to a RollGuard server, because none exists.</p>
   </div>
 
   <h3>How long is this data kept?</h3>
-  <p>Locally stored scan results are kept on your device only for as long as the app remains installed, or until you clear them yourself (via the app's own controls, if provided, or by deleting the app). We don't retain any copy of this data ourselves, anywhere, at any time — there is nothing on our side to delete, since nothing is ever sent to us.</p>
+  <p>Choosing Keep, Hide, or Delete for a flagged item changes its status in this local record, but does not remove the record itself — the entry, including the original matched detail, stays in the local database. This lets RollGuard correctly avoid re-flagging something you've already reviewed. The only way to remove this data entirely is to delete the app itself, which erases the whole local database along with it. We don't retain any copy of this data ourselves, anywhere, at any time — there is nothing on our side to delete, since nothing is ever sent to us.</p>
 
   <h2>Purchases</h2>
   <p>RollGuard Pro is a one-time in-app purchase, processed by Apple through StoreKit. To handle that purchase and confirm entitlement, RollGuard uses a third-party service called RevenueCat.</p>
@@ -90,7 +90,7 @@
 
   <h2>Your choices</h2>
   <ul>
-    <li><strong>Keep</strong> leaves a photo untouched, and clears it from RollGuard's review queue.</li>
+    <li><strong>Keep</strong> clears the item from RollGuard's review queue and leaves the photo exactly as it is.</li>
     <li><strong>Hide</strong> moves the photo into your iPhone's own Hidden album — a standard iOS feature, protected by Face ID, Touch ID, or your passcode. This uses Apple's own PhotoKit framework; RollGuard doesn't create any separate album or storage location of its own, and the photo is never removed from your library.</li>
     <li><strong>Delete</strong> is the only action that removes the photo itself — and it always asks Apple's system permission dialog first, the same as deleting any photo manually.</li>
   </ul>
