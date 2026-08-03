@@ -165,9 +165,11 @@
   .why-body{color:var(--ink-soft);font-size:14.5px;margin:0;}
   @media (max-width:640px){.why-grid{grid-template-columns:1fr;}}
 
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
   .price-card{
     background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);
-    padding:40px;max-width:460px;
+    padding:40px;
   }
   .price-head{font-family:var(--font-display);font-weight:700;font-size:22px;margin:0 0 6px;}
   .price-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 24px;}
@@ -176,7 +178,6 @@
     font-size:14.5px;color:var(--ink-soft);}
   .price-list li:first-child{border-top:none;}
   .price-list li::before{content:'—';color:var(--teal);flex-shrink:0;}
-  .pricing-note{color:var(--ink-soft);font-size:16px;max-width:60ch;margin-top:24px;}
 
   .faq-item{border-top:1px solid var(--line);padding:22px 0;}
   .faq-item:last-child{border-bottom:1px solid var(--line);}
@@ -287,18 +288,28 @@
   </section>
 
   <section id="pricing" class="tight">
-    <h2>One price. No subscription, ever.</h2>
-    <p class="section-sub">Free scan of your last 30 days shows you exactly what RollGuard finds — real results, not a demo. Unlock your full library whenever you're ready.</p>
-    <div class="price-card">
-      <p class="price-head">RollGuard Pro</p>
-      <p class="price-sub">A single one-time purchase. Price shown on the App Store in your local currency.</p>
-      <ul class="price-list">
-        <li>Unlocks scanning your entire photo library, not just the last 30 days</li>
-        <li>Unlocks full control — choose exactly what to scan for, every time</li>
-        <li>Pay once, use forever — no renewals, no reminders</li>
-      </ul>
+    <h2>Real results, free — full control, one price.</h2>
+    <p class="section-sub">The free version isn't a locked demo — it's a genuinely complete scan that keeps working in the background, for as long as you use it. Pro unlocks acting on everything it finds.</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <p class="price-head">RollGuard Free</p>
+        <p class="price-sub">No sign-up, no trial period, no limits on how often you use it.</p>
+        <ul class="price-list">
+          <li>Full scan of your last 30 days — every category, real results</li>
+          <li>Keeps checking your whole library in the background, for free</li>
+          <li>Shows you a real running count of what it's found, before you pay anything</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <p class="price-head">RollGuard Pro</p>
+        <p class="price-sub">A single one-time purchase. Price shown on the App Store in your local currency.</p>
+        <ul class="price-list">
+          <li>Unlocks scanning your entire photo library, not just the last 30 days</li>
+          <li>Unlocks full control — choose exactly what to scan for, every time</li>
+          <li>Pay once, use forever — no renewals, no reminders</li>
+        </ul>
+      </div>
     </div>
-    <p class="pricing-note">The free version already runs a genuinely complete scan of your last 30 days, every category, re-scannable anytime — and it keeps quietly checking the rest of your library in the background too, showing you how much more is likely waiting. Unlock Pro to run a full scan and see and act on everything it finds.</p>
   </section>
 
   <section class="tight">
