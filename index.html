@@ -215,7 +215,7 @@
   <section class="hero" id="top">
     <span class="eyebrow">iOS · fully on-device</span>
     <h1>Know what's hiding in your camera roll — before you hand over your phone.</h1>
-    <p class="lede">RollGuard scans your photos for identity documents like passports and driver's licences, payment cards, old passwords and credentials — whether screenshotted or photographed — and sensitive images, without any of it ever leaving your phone.</p>
+    <p class="lede">RollGuard scans your photos for identity documents like passports and driver's licences, payment cards, screenshots of old passwords and credentials, and sensitive images, without any of it ever leaving your phone.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#pricing">See how it works</a>
       <a class="btn btn-ghost" href="mailto:support@rollguard.app">Ask a question</a>
@@ -255,7 +255,7 @@
     <div class="log-card">
       <div class="log-line"><span class="log-tag">identity documents</span><span class="log-desc">passports, driver's licences, national ID cards, national medical cards, national tax identifiers</span></div>
       <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
-      <div class="log-line"><span class="log-tag">secrets & credentials</span><span class="log-desc">passwords, OTP codes, banking, seed phrases, WiFi and router credentials</span></div>
+      <div class="log-line"><span class="log-tag">secrets &amp; credentials</span><span class="log-desc">passwords, one-time codes, banking, seed phrases — in screenshots; WiFi and router credentials in any photo</span></div>
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
     </div>
   </section>
@@ -289,14 +289,14 @@
 
   <section id="pricing" class="tight">
     <h2>Real results, free — full control, one price.</h2>
-    <p class="section-sub">The free version isn't a locked demo — it's a genuinely complete scan that keeps working in the background, for as long as you use it. Pro unlocks acting on everything it finds.</p>
+    <p class="section-sub">The free version isn't a locked demo — it's a genuinely complete scan that keeps working through your whole library on its own, for as long as you leave it running. Pro unlocks acting on everything it finds.</p>
     <div class="price-grid">
       <div class="price-card">
         <p class="price-head">RollGuard Free</p>
         <p class="price-sub">No sign-up, no trial period, no limits on how often you use it.</p>
         <ul class="price-list">
           <li>Checks your last 30 days fully — every category, real results</li>
-          <li><strong>Then keeps going — checks your entire library in the background, for free</strong></li>
+          <li><strong>Then keeps going — works through your entire library automatically, for free</strong></li>
           <li>Shows you a real running count of what it finds, before you ever pay</li>
         </ul>
       </div>
@@ -377,8 +377,8 @@
       redact.className = 'redact';
       tile.appendChild(redact);
       const label = document.createElement('div');
-      label.className = 'label';
       label.textContent = labels[i];
+      label.className = 'label';
       tile.appendChild(label);
     }
     container.appendChild(tile);
