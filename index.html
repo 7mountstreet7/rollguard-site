@@ -39,7 +39,6 @@
   .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
   section{padding:96px 0;}
   section.tight{padding:64px 0;}
-
   nav{
     max-width:920px;margin:0 auto;padding:28px 24px 0;
     display:flex;align-items:center;justify-content:space-between;
@@ -53,7 +52,6 @@
     nav{flex-direction:column;align-items:flex-start;gap:14px;padding-top:20px;}
     .navlinks{width:100%;flex-wrap:wrap;gap:14px 18px;font-size:13px;}
   }
-
   .hero{padding:72px 0 40px;}
   .eyebrow{
     font-family:var(--font-mono);font-size:12.5px;color:var(--teal-deep);
@@ -77,7 +75,6 @@
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
   .btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);}
   .cta-note{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);}
-
   .grid-demo{margin-top:64px;}
   .grid-demo-label{
     font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
@@ -118,7 +115,6 @@
   @media (max-width:640px){
     .tiles{grid-template-columns:repeat(6,1fr);}
   }
-
   .log-card{
     background:var(--ink);border-radius:var(--radius);padding:30px 32px;
     font-family:var(--font-mono);font-size:14px;color:#DDEAE5;
@@ -135,11 +131,9 @@
     .log-line{flex-direction:column;gap:2px;}
     .log-tag{width:auto;}
   }
-
   h2{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.4vw,32px);
     letter-spacing:-0.01em;margin:0 0 14px;}
   .section-sub{color:var(--ink-soft);max-width:52ch;margin:0 0 40px;font-size:16px;}
-
   .privacy-row{display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
   .device{flex-shrink:0;width:120px;height:220px;border:2.5px solid var(--ink);border-radius:22px;
     position:relative;}
@@ -150,21 +144,18 @@
   .privacy-text{flex:1;min-width:260px;}
   .privacy-text p{color:var(--ink-soft);font-size:16px;}
   .privacy-text strong{color:var(--ink);}
-
   .trust-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
   .trust-badge{
     font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);
     background:var(--card);border:1px solid var(--line);border-radius:999px;
     padding:6px 14px;
   }
-
   .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;}
   .why-card{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:26px 28px;}
   .why-icon{font-size:22px;margin-bottom:10px;display:block;}
   .why-title{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0 0 8px;}
   .why-body{color:var(--ink-soft);font-size:14.5px;margin:0;}
   @media (max-width:640px){.why-grid{grid-template-columns:1fr;}}
-
   .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
   .price-card{
@@ -178,12 +169,10 @@
     font-size:14.5px;color:var(--ink-soft);}
   .price-list li:first-child{border-top:none;}
   .price-list li::before{content:'—';color:var(--teal);flex-shrink:0;}
-
   .faq-item{border-top:1px solid var(--line);padding:22px 0;}
   .faq-item:last-child{border-bottom:1px solid var(--line);}
   .faq-q{font-family:var(--font-display);font-weight:700;font-size:16.5px;margin:0 0 8px;}
   .faq-a{color:var(--ink-soft);font-size:15px;margin:0;max-width:60ch;}
-
   .support-card{
     background:var(--mint);border-radius:var(--radius);padding:36px 40px;
   }
@@ -192,14 +181,12 @@
     font-weight:500;
   }
   .mail-link:hover{text-decoration:underline;}
-
   footer{padding:48px 0 64px;border-top:1px solid var(--line);margin-top:24px;}
   .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
     font-size:13.5px;color:var(--ink-soft);}
 </style>
 </head>
 <body>
-
 <nav>
   <a class="brand" href="#top">Roll<span>Guard</span></a>
   <div class="navlinks">
@@ -209,9 +196,7 @@
     <a href="/privacy.html">Privacy</a>
   </div>
 </nav>
-
 <div class="wrap">
-
   <section class="hero" id="top">
     <span class="eyebrow">iOS · fully on-device</span>
     <h1>Know what's hiding in your camera roll — before you hand over your phone.</h1>
@@ -221,7 +206,6 @@
       <a class="btn btn-ghost" href="mailto:support@rollguard.app">Ask a question</a>
     </div>
     <p class="cta-note" style="margin-top:14px;">Launching soon on the App Store.</p>
-
     <div class="grid-demo">
       <div class="grid-demo-label">
         <span>your camera roll</span>
@@ -230,16 +214,16 @@
       <div class="tiles" id="tiles"></div>
     </div>
   </section>
-
   <section class="tight">
     <h2>Nothing leaves your phone</h2>
     <div class="privacy-row">
       <div class="device" aria-hidden="true"></div>
       <div class="privacy-text">
-        <p>RollGuard doesn't have a server. There's no account to create, no photo ever uploaded, nothing sent anywhere for analysis. Every scan — and every result — stays <strong>on the device in your hand</strong>.</p>
+        <p>RollGuard doesn't have a server. There's no account to create, no photo ever uploaded, nothing sent anywhere for analysis. Every scan — and every result — stays <strong>on the device in your hand</strong>. Don't take our word for it: turn on Airplane Mode and run a scan. Everything works.</p>
         <p>Once a scan finds something, you decide what happens to it: keep it, hide it into your iPhone's own protected Hidden album — locked behind Face ID, Touch ID, or your passcode — or delete it from your library entirely. RollGuard never acts on your photos without you telling it to.</p>
         <div class="trust-badges">
           <span class="trust-badge">100% on-device</span>
+          <span class="trust-badge">Scans in Airplane Mode</span>
           <span class="trust-badge">No cloud uploads</span>
           <span class="trust-badge">No account required</span>
           <span class="trust-badge">Uses Apple's privacy frameworks</span>
@@ -248,7 +232,6 @@
       </div>
     </div>
   </section>
-
   <section id="how">
     <h2>Four things it looks for</h2>
     <p class="section-sub">Every scan runs the same four checks, on-device, and reports back plainly — no invented accuracy scores, no vague warnings.</p>
@@ -259,7 +242,6 @@
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
     </div>
   </section>
-
   <section class="tight">
     <h2>Why this matters</h2>
     <p class="section-sub">Same scan, same on-device engine — these are just the moments people actually reach for it.</p>
@@ -286,7 +268,6 @@
       </div>
     </div>
   </section>
-
   <section id="pricing" class="tight">
     <h2>Real results, free — full control, one price.</h2>
     <p class="section-sub">The free version isn't a locked demo — it's a genuinely complete scan that keeps working through your whole library on its own, for as long as you leave it running. Pro unlocks acting on everything it finds.</p>
@@ -311,16 +292,19 @@
       </div>
     </div>
   </section>
-
   <section class="tight">
     <h2>A few honest answers</h2>
     <div class="faq-item">
       <p class="faq-q">Does RollGuard ever upload my photos?</p>
-      <p class="faq-a">No. There's no server for it to talk to. Scanning, matching, and storing results all happen using your iPhone's own processor.</p>
+      <p class="faq-a">No. There's no server for it to talk to. Scanning, matching, and storing results all happen using your iPhone's own processor. Scanning even works in Airplane Mode — feel free to try.</p>
     </div>
     <div class="faq-item">
       <p class="faq-q">What do "Keep," "Hide," and "Delete" actually do?</p>
       <p class="faq-a"><strong>Keep</strong> clears the item from RollGuard's review queue and leaves the photo exactly as it is. <strong>Hide</strong> moves it into your iPhone's own Hidden album — a standard iOS feature, protected by Face ID, Touch ID, or your passcode. RollGuard doesn't create a separate hiding place of its own; it uses Apple's, and the photo is never removed from your library. <strong>Delete</strong> is the only action that removes the photo itself, and it always asks Apple's system permission first, the same as deleting any photo manually.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">I deleted a photo — is it really gone?</p>
+      <p class="faq-a">When any app deletes a photo — RollGuard, or Photos itself — iOS moves it to the <strong>Recently Deleted</strong> album for 30 days before removing it permanently. That's Apple's safety net against accidental deletion, and it applies to every app on your iPhone. If you want a photo gone immediately — say, before handing your phone to someone — open <strong>Photos → Recently Deleted</strong> (Face ID may be required), select the photo, and delete it there. RollGuard treats a photo as handled the moment it enters Recently Deleted, because at that point it's no longer part of your active library.</p>
     </div>
     <div class="faq-item">
       <p class="faq-q">Is this a subscription?</p>
@@ -335,7 +319,6 @@
       <p class="faq-a">RollGuard tells you exactly that — nothing hidden, no vague "all clear" message. If a scan finds nothing, RollGuard says so plainly and won't push you to buy anything you don't need: "Nothing else flagged this time. No need to upgrade to Pro right now — re-run this free scan every 30 days to stay on top of anything new."</p>
     </div>
   </section>
-
   <section id="support">
     <h2>Support</h2>
     <div class="support-card">
@@ -343,16 +326,13 @@
       <a class="mail-link" href="mailto:support@rollguard.app">support@rollguard.app</a>
     </div>
   </section>
-
   <footer>
     <div class="foot-row">
       <span>© 2026 RollGuard · <a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Terms</a></span>
       <span>RollGuard processes everything on your device. Your photos never leave your phone.</span>
     </div>
   </footer>
-
 </div>
-
 <script>
   const flaggedIndexes = new Set([3, 9, 14, 20]);
   const labels = {
@@ -384,6 +364,5 @@
     container.appendChild(tile);
   }
 </script>
-
 </body>
 </html>
