@@ -173,6 +173,10 @@
   .faq-item:last-child{border-bottom:1px solid var(--line);}
   .faq-q{font-family:var(--font-display);font-weight:700;font-size:16.5px;margin:0 0 8px;}
   .faq-a{color:var(--ink-soft);font-size:15px;margin:0;max-width:60ch;}
+  .prose{color:var(--ink-soft);font-size:15.5px;max-width:64ch;}
+  .prose p{margin:0 0 16px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--ink);}
   .support-card{
     background:var(--mint);border-radius:var(--radius);padding:36px 40px;
   }
@@ -221,6 +225,7 @@
       <div class="privacy-text">
         <p>RollGuard doesn't have a server. There's no account to create, no photo ever uploaded, nothing sent anywhere for analysis. Every scan — and every result — stays <strong>on the device in your hand</strong>. Don't take our word for it: <strong>turn on Airplane Mode and run a scan</strong>. Everything works.</p>
         <p>Once a scan finds something, you decide what happens to it: keep it, hide it into your iPhone's own protected Hidden album — locked behind Face ID, Touch ID, or your passcode — or delete it from your library entirely. RollGuard never acts on your photos without you telling it to.</p>
+        <p><strong>Under the hood, it's Apple's own tools.</strong> Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning (iOS 17 and later). Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connection RollGuard makes is for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos.</p>
         <div class="trust-badges">
           <span class="trust-badge">100% on-device</span>
           <span class="trust-badge">Scans in Airplane Mode</span>
@@ -240,6 +245,16 @@
       <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
       <div class="log-line"><span class="log-tag">secrets &amp; credentials</span><span class="log-desc">passwords, one-time codes, banking, seed phrases — in screenshots; WiFi and router credentials in any photo</span></div>
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
+    </div>
+  </section>
+  <section class="tight">
+    <h2>What RollGuard keeps — and what it doesn't</h2>
+    <p class="section-sub">Exactly what happens to a photo when it's scanned, flagged, or left alone.</p>
+    <div class="prose">
+      <p>When RollGuard scans a photo, the text it recognises is examined on your phone and then discarded. For a photo that's flagged, RollGuard keeps just enough to show you the result: which photo it was, what kind of thing it found, and a <strong>masked fragment</strong> — the same "•••• 4242" you see in the review queue. The full text of the photo is never stored.</p>
+      <p>For a photo that isn't flagged, RollGuard keeps only that it was checked, when, and basic photo metadata — no text, no content, no record of what was in it. Photos beyond your free 30-day window that the background check counts but can't show you aren't stored at all; only the counts persist — how many, by category, and how many photos were checked — nothing about which photos.</p>
+      <p>Because RollGuard stores no raw text from your photos, there's no hidden index of your library sitting on the device. A backup carries the same masked view you see in the queue — no text or fragments a person could use.</p>
+      <p>Then it's your call. <strong>Keep</strong> clears the flag and touches nothing. <strong>Hide</strong> moves the photo into your iPhone's own Hidden album, protected by Face ID. <strong>Delete</strong> removes it — via Apple's own permission dialog, into Recently Deleted, on iOS's standard 30-day terms. Whatever you choose, RollGuard has already forgotten the text it saw.</p>
     </div>
   </section>
   <section class="tight">
@@ -290,6 +305,17 @@
           <li>Pay once, use forever — no renewals, no reminders</li>
         </ul>
       </div>
+    </div>
+  </section>
+  <section class="tight">
+    <h2>What it's not good at</h2>
+    <p class="section-sub">Detection is a question, not a verdict — here's where the questions get harder.</p>
+    <div class="prose">
+      <p><strong>Handwriting.</strong> RollGuard reads printed text. A handwritten note — a password on a sticky note, a signature on the back of a card — is largely invisible to it. If you know handwritten secrets live in your photos, that's a search only your eyes can do.</p>
+      <p><strong>Blurry, angled, or dark photos.</strong> Detection is only as good as what can be read. A crisp screenshot is easy; a passport photographed at an angle in bad light may slip through. When RollGuard misses something, it's usually because the text simply couldn't be recognised.</p>
+      <p><strong>Sensitive images.</strong> This check is Apple's own model, running on your phone. It's good, and it's private — but it's Apple's, with its own judgement about what counts. RollGuard can't tune it, only report it.</p>
+      <p><strong>False alarms.</strong> RollGuard deliberately errs toward asking. A news article about driving licences, a receipt with a long number, an ID card that's already expired — some of what it flags won't matter to you. That's by design: a flag is a question for your review, never an accusation, and every one costs you a glance and a tap. Better a few unnecessary questions than a missed passport.</p>
+      <p><strong>What this all means:</strong> RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It shows you what it found and lets you decide.</p>
     </div>
   </section>
   <section class="tight">
