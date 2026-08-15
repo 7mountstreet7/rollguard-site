@@ -169,14 +169,26 @@
     font-size:14.5px;color:var(--ink-soft);}
   .price-list li:first-child{border-top:none;}
   .price-list li::before{content:'—';color:var(--teal);flex-shrink:0;}
-  .faq-item{border-top:1px solid var(--line);padding:22px 0;}
-  .faq-item:last-child{border-bottom:1px solid var(--line);}
-  .faq-q{font-family:var(--font-display);font-weight:700;font-size:16.5px;margin:0 0 8px;}
-  .faq-a{color:var(--ink-soft);font-size:15px;margin:0;max-width:60ch;}
-  .prose{color:var(--ink-soft);font-size:15.5px;max-width:64ch;}
-  .prose p{margin:0 0 16px;}
-  .prose p:last-child{margin-bottom:0;}
-  .prose strong{color:var(--ink);}
+  .faq-item{border-top:1px solid var(--line);}
+  .faq-item:last-of-type{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    font-family:var(--font-display);font-weight:700;font-size:16.5px;
+    padding:20px 32px 20px 0;cursor:pointer;list-style:none;position:relative;
+    color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+';position:absolute;right:4px;top:50%;transform:translateY(-50%);
+    font-family:var(--font-mono);font-weight:400;font-size:20px;color:var(--teal);
+    transition:transform 0.2s ease;
+  }
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item summary:hover{color:var(--teal-deep);}
+  .faq-item summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px;}
+  .faq-a{color:var(--ink-soft);font-size:15px;margin:0;padding:0 0 22px;max-width:60ch;}
+  .faq-a p{margin:0 0 12px;}
+  .faq-a p:last-child{margin-bottom:0;}
+  .faq-a strong{color:var(--ink);}
   .support-card{
     background:var(--mint);border-radius:var(--radius);padding:36px 40px;
   }
@@ -225,7 +237,6 @@
       <div class="privacy-text">
         <p>RollGuard doesn't have a server. There's no account to create, no photo ever uploaded, nothing sent anywhere for analysis. Every scan — and every result — stays <strong>on the device in your hand</strong>. Don't take our word for it: <strong>turn on Airplane Mode and run a scan</strong>. Everything works.</p>
         <p>Once a scan finds something, you decide what happens to it: keep it, hide it into your iPhone's own protected Hidden album — locked behind Face ID, Touch ID, or your passcode — or delete it from your library entirely. RollGuard never acts on your photos without you telling it to.</p>
-        <p><strong>Under the hood, it's Apple's own tools.</strong> Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning (iOS 17 and later). Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connection RollGuard makes is for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos.</p>
         <div class="trust-badges">
           <span class="trust-badge">100% on-device</span>
           <span class="trust-badge">Scans in Airplane Mode</span>
@@ -245,16 +256,6 @@
       <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
       <div class="log-line"><span class="log-tag">secrets &amp; credentials</span><span class="log-desc">passwords, one-time codes, banking, seed phrases — in screenshots; WiFi and router credentials in any photo</span></div>
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
-    </div>
-  </section>
-  <section class="tight">
-    <h2>What RollGuard keeps — and what it doesn't</h2>
-    <p class="section-sub">Exactly what happens to a photo when it's scanned, flagged, or left alone.</p>
-    <div class="prose">
-      <p>When RollGuard scans a photo, the text it recognises is examined on your phone and then discarded. For a photo that's flagged, RollGuard keeps just enough to show you the result: which photo it was, what kind of thing it found, and a <strong>masked fragment</strong> — the same "•••• 4242" you see in the review queue. The full text of the photo is never stored.</p>
-      <p>For a photo that isn't flagged, RollGuard keeps only that it was checked, when, and basic photo metadata — no text, no content, no record of what was in it. Photos beyond your free 30-day window that the background check counts but can't show you aren't stored at all; only the counts persist — how many, by category, and how many photos were checked — nothing about which photos.</p>
-      <p>Because RollGuard stores no raw text from your photos, there's no hidden index of your library sitting on the device. A backup carries the same masked view you see in the queue — no text or fragments a person could use.</p>
-      <p>Then it's your call. <strong>Keep</strong> clears the flag and touches nothing. <strong>Hide</strong> moves the photo into your iPhone's own Hidden album, protected by Face ID. <strong>Delete</strong> removes it — via Apple's own permission dialog, into Recently Deleted, on iOS's standard 30-day terms. Whatever you choose, RollGuard has already forgotten the text it saw.</p>
     </div>
   </section>
   <section class="tight">
@@ -309,41 +310,55 @@
   </section>
   <section class="tight">
     <h2>What it's not good at</h2>
-    <p class="section-sub">Detection is a question, not a verdict — here's where the questions get harder.</p>
-    <div class="prose">
-      <p><strong>Handwriting.</strong> RollGuard reads printed text. A handwritten note — a password on a sticky note, a signature on the back of a card — is largely invisible to it. If you know handwritten secrets live in your photos, that's a search only your eyes can do.</p>
-      <p><strong>Blurry, angled, or dark photos.</strong> Detection is only as good as what can be read. A crisp screenshot is easy; a passport photographed at an angle in bad light may slip through. When RollGuard misses something, it's usually because the text simply couldn't be recognised.</p>
-      <p><strong>Sensitive images.</strong> This check is Apple's own model, running on your phone. It's good, and it's private — but it's Apple's, with its own judgement about what counts. RollGuard can't tune it, only report it.</p>
-      <p><strong>False alarms.</strong> RollGuard deliberately errs toward asking. A news article about driving licences, a receipt with a long number, an ID card that's already expired — some of what it flags won't matter to you. That's by design: a flag is a question for your review, never an accusation, and every one costs you a glance and a tap. Better a few unnecessary questions than a missed passport.</p>
-      <p><strong>What this all means:</strong> RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It shows you what it found and lets you decide.</p>
-    </div>
+    <p class="section-sub">RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It reads printed text (not handwriting), works best on clear photos, uses Apple's own model for sensitive images, and deliberately errs toward asking. It shows you what it found and lets you decide.</p>
   </section>
   <section class="tight">
     <h2>A few honest answers</h2>
-    <div class="faq-item">
-      <p class="faq-q">Does RollGuard ever upload my photos?</p>
-      <p class="faq-a">No. There's no server for it to talk to. Scanning, matching, and storing results all happen using your iPhone's own processor. Scanning even works in Airplane Mode — feel free to try.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">What do "Keep," "Hide," and "Delete" actually do?</p>
-      <p class="faq-a"><strong>Keep</strong> clears the item from RollGuard's review queue and leaves the photo exactly as it is. <strong>Hide</strong> moves it into your iPhone's own Hidden album — a standard iOS feature, protected by Face ID, Touch ID, or your passcode. RollGuard doesn't create a separate hiding place of its own; it uses Apple's, and the photo is never removed from your library. <strong>Delete</strong> is the only action that removes the photo itself, and it always asks Apple's system permission first, the same as deleting any photo manually.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">I deleted a photo — is it really gone?</p>
-      <p class="faq-a">When any app deletes a photo — RollGuard, or Photos itself — iOS moves it to the <strong>Recently Deleted</strong> album for 30 days before removing it permanently. That's Apple's safety net against accidental deletion, and it applies to every app on your iPhone. If you want a photo gone immediately — say, before handing your phone to someone — open <strong>Photos → Recently Deleted</strong> (Face ID may be required), select the photo, and delete it there. RollGuard treats a photo as handled the moment it enters Recently Deleted, because at that point it's no longer part of your active library.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Is this a subscription?</p>
-      <p class="faq-a">No. RollGuard Pro is a single one-time purchase that unlocks everything, permanently.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Why do I need to keep the app open during a scan?</p>
-      <p class="faq-a">RollGuard only runs while it's open, by design — iOS pauses apps the moment you switch away or lock your screen, the same as any app without special permission to keep running in the background. A full scan can take a while depending on how many photos you have, so just leave RollGuard open and the screen unlocked until it finishes — you'll see live progress the whole time, and you can turn on a notification to know the moment it's done.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">What happens if nothing's flagged?</p>
-      <p class="faq-a">RollGuard tells you exactly that — nothing hidden, no vague "all clear" message. If a scan finds nothing, RollGuard says so plainly and won't push you to buy anything you don't need: "Nothing else flagged this time. No need to upgrade to Pro right now — re-run this free scan every 30 days to stay on top of anything new."</p>
-    </div>
+    <details class="faq-item">
+      <summary>Does RollGuard ever upload my photos?</summary>
+      <div class="faq-a"><p>No. There's no server for it to talk to. Scanning, matching, and storing results all happen using your iPhone's own processor. Scanning even works in Airplane Mode — feel free to try.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What exactly does RollGuard store about my photos?</summary>
+      <div class="faq-a">
+        <p>When RollGuard scans a photo, the text it recognises is examined on your phone and then discarded. For a photo that's flagged, RollGuard keeps just enough to show you the result: which photo it was, what kind of thing it found, and a <strong>masked fragment</strong> — the same "•••• 4242" you see in the review queue. The full text of the photo is never stored.</p>
+        <p>For a photo that isn't flagged, RollGuard keeps only that it was checked, when, and basic photo metadata — no text, no content, no record of what was in it. Photos beyond your free 30-day window that the background check counts but can't show you aren't stored at all; only the counts persist — how many, by category, and how many photos were checked — nothing about which photos.</p>
+        <p>Because RollGuard stores no raw text from your photos, there's no hidden index of your library sitting on the device. A backup carries the same masked view you see in the queue — no text or fragments a person could use. Whatever action you take, RollGuard has already forgotten the text it saw.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What do "Keep," "Hide," and "Delete" actually do?</summary>
+      <div class="faq-a"><p><strong>Keep</strong> clears the item from RollGuard's review queue and leaves the photo exactly as it is. <strong>Hide</strong> moves it into your iPhone's own Hidden album — a standard iOS feature, protected by Face ID, Touch ID, or your passcode. RollGuard doesn't create a separate hiding place of its own; it uses Apple's, and the photo is never removed from your library. <strong>Delete</strong> is the only action that removes the photo itself, and it always asks Apple's system permission first, the same as deleting any photo manually.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>I deleted a photo — is it really gone?</summary>
+      <div class="faq-a"><p>When any app deletes a photo — RollGuard, or Photos itself — iOS moves it to the <strong>Recently Deleted</strong> album for 30 days before removing it permanently. That's Apple's safety net against accidental deletion, and it applies to every app on your iPhone. If you want a photo gone immediately — say, before handing your phone to someone — open <strong>Photos → Recently Deleted</strong> (Face ID may be required), select the photo, and delete it there. RollGuard treats a photo as handled the moment it enters Recently Deleted, because at that point it's no longer part of your active library.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Is this a subscription?</summary>
+      <div class="faq-a"><p>No. RollGuard Pro is a single one-time purchase that unlocks everything, permanently.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Why do I need to keep the app open during a scan?</summary>
+      <div class="faq-a"><p>RollGuard only runs while it's open, by design — iOS pauses apps the moment you switch away or lock your screen, the same as any app without special permission to keep running in the background. A full scan can take a while depending on how many photos you have, so just leave RollGuard open and the screen unlocked until it finishes — you'll see live progress the whole time, and you can turn on a notification to know the moment it's done.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What happens if nothing's flagged?</summary>
+      <div class="faq-a"><p>RollGuard tells you exactly that — nothing hidden, no vague "all clear" message. If a scan finds nothing, RollGuard says so plainly and won't push you to buy anything you don't need: "Nothing else flagged this time. No need to upgrade to Pro right now — re-run this free scan every 30 days to stay on top of anything new."</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What does RollGuard miss?</summary>
+      <div class="faq-a">
+        <p><strong>Handwriting.</strong> RollGuard reads printed text. A handwritten note — a password on a sticky note, a signature on the back of a card — is largely invisible to it. If you know handwritten secrets live in your photos, that's a search only your eyes can do.</p>
+        <p><strong>Blurry, angled, or dark photos.</strong> Detection is only as good as what can be read. A crisp screenshot is easy; a passport photographed at an angle in bad light may slip through. When RollGuard misses something, it's usually because the text simply couldn't be recognised.</p>
+        <p><strong>Sensitive images.</strong> This check is Apple's own model, running on your phone. It's good, and it's private — but it's Apple's, with its own judgement about what counts. RollGuard can't tune it, only report it.</p>
+        <p><strong>False alarms.</strong> RollGuard deliberately errs toward asking. A news article about driving licences, a receipt with a long number, an ID card that's already expired — some of what it flags won't matter to you. That's by design: a flag is a question for your review, never an accusation. Better a few unnecessary questions than a missed passport.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What Apple technologies does RollGuard actually use?</summary>
+      <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning (iOS 17 and later). Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connection RollGuard makes is for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos.</p></div>
+    </details>
   </section>
   <section id="support">
     <h2>Support</h2>
