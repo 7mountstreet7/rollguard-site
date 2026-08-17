@@ -44,9 +44,11 @@
   h3{font-family:var(--font-display);font-weight:700;font-size:16px;margin:28px 0 10px;}
   p{color:var(--ink-soft);font-size:15.5px;margin:0 0 14px;}
   .card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;margin:20px 0;}
-  .card p{margin:0;}
+  .card p{margin:0 0 12px;}
+  .card p:last-child{margin:0;}
   ul{color:var(--ink-soft);font-size:15.5px;padding-left:20px;margin:0 0 14px;}
   li{margin-bottom:6px;}
+  strong{color:var(--ink);}
   .mail-link{font-family:var(--font-mono);font-size:15.5px;color:var(--teal-deep);text-decoration:none;font-weight:500;}
   .mail-link:hover{text-decoration:underline;}
   table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:14.5px;}
@@ -57,11 +59,9 @@
 </style>
 </head>
 <body>
-
 <nav><a class="brand" href="/">Roll<span>Guard</span></a></nav>
-
 <div class="wrap">
-  <span class="updated">last updated · 5 August 2026</span>
+  <span class="updated">last updated · 18 August 2026</span>
   <h1>Privacy policy</h1>
   <p class="lede">The short version: RollGuard doesn't have a server, doesn't have accounts, and never sees your photos. Here's the detail behind that claim, including what's required to say for users in the EU, UK, California, and elsewhere.</p>
 
@@ -69,53 +69,59 @@
   <p>This policy is issued by David Smith, trading as RollGuard, a sole trader based in New South Wales, Australia. Wherever "we," "us," or "our" appears below, it refers to David Smith. Contact details are at the end of this page.</p>
 
   <h2>What RollGuard scans, and where</h2>
-  <p>RollGuard scans photos in your iPhone's camera roll to look for identity documents, payment card numbers, screenshots or photographed labels containing passwords or credentials, and — on iOS 17 and later, only if you've enabled it in Settings — sensitive images, using Apple's own on-device Sensitive Content Analysis.</p>
-  <p>All of this scanning happens using your iPhone's own processor. RollGuard has no server to send photos to, and no photo, thumbnail, or scan result is ever transmitted off your device.</p>
+  <p>RollGuard scans photos in your iPhone's camera roll to look for identity documents, payment card numbers, screenshots containing passwords or credentials (and photographed WiFi or router labels), and — on iOS 17 and later — sensitive images, using Apple's own on-device Sensitive Content Analysis.</p>
+  <p>All of this scanning happens using your iPhone's own processor. RollGuard has no server to send photos to, and no photo, thumbnail, or scan result is ever transmitted off your device. Scanning works even in Airplane Mode.</p>
 
   <h2>Accounts and identity</h2>
   <p>RollGuard has no account system. There's no sign-up, no login, and no email address collected to use the app. Nothing about your usage of the app is tied to your identity.</p>
 
-  <h2>What is stored, and where</h2>
+  <h2>What is stored, and what isn't</h2>
   <div class="card">
-    <p>Scan results are stored locally on your device only, in a local database — including which photos were flagged, which category (identity document, payment card, and so on), the specific text or detail that triggered the flag, and your decision (kept, hidden, or deleted). Nothing is backed up to a RollGuard server, because none exists.</p>
+    <p>When RollGuard scans a photo, the text it recognises is examined on your phone and then discarded. For a photo that's flagged, RollGuard keeps just enough to show you the result: which photo it was, what kind of thing it found, a <strong>masked fragment</strong> (the same "•••• 4242" you see in the review queue), and your decision (kept, hidden, or deleted). The full text of the photo is never stored.</p>
+    <p>For a photo that isn't flagged, RollGuard keeps only that it was checked, when, and basic photo metadata — no text, no content, no record of what was in it. Photos beyond your free 30-day window that the background check counts but can't show you aren't stored at all; only the counts persist.</p>
+    <p>All of this lives in a local database on your device only. There is no hidden index of your library, and a device backup carries the same masked view you see in the queue — no text or fragments a person could use. Nothing is backed up to a RollGuard server, because none exists.</p>
   </div>
-
   <h3>How long is this data kept?</h3>
-  <p>Choosing Keep, Hide, or Delete for a flagged item changes its status in this local record, but does not remove the record itself — the entry, including the original matched detail, stays in the local database. This lets RollGuard correctly avoid re-flagging something you've already reviewed. The only way to remove this data entirely is to delete the app itself, which erases the whole local database along with it. We don't retain any copy of this data ourselves, anywhere, at any time — there is nothing on our side to delete, since nothing is ever sent to us.</p>
+  <p>Choosing Keep, Hide, or Delete for a flagged item changes its status in this local record, but does not remove the record — the entry, with its masked fragment, stays in the local database so RollGuard can avoid re-flagging something you've already reviewed. The only way to remove this data entirely is to delete the app, which erases the whole local database with it. We don't retain any copy of this data ourselves, anywhere, at any time — there is nothing on our side to delete, since nothing is ever sent to us.</p>
 
   <h2>Purchases</h2>
-  <p>RollGuard Pro is a one-time in-app purchase, processed by Apple through StoreKit. To handle that purchase and confirm entitlement, RollGuard uses a third-party service called RevenueCat.</p>
-  <p>RevenueCat's SDK requires declaring two categories of data under Apple's App Privacy framework — <strong>Analytics</strong> and <strong>App Functionality</strong> — related to processing your purchase and confirming your entitlement to Pro features. This data is <strong>not linked to your identity</strong>: RollGuard has no accounts, and no personal profile is created or maintained. You can read <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's own privacy policy</a> for more detail on how they handle this data.</p>
+  <p>RollGuard Pro is a one-time in-app purchase, billed and processed by Apple through the App Store — RollGuard never sees your payment details. To confirm your purchase and restore it if you reinstall, RollGuard uses RevenueCat, a purchase-management service. When you buy or restore Pro, RevenueCat receives the purchase receipt and a random identifier the app generates, and uses them to keep track of your entitlement. RevenueCat never receives your photos, scan results, or anything about your library — only purchase information, which is <strong>not linked to your identity</strong>. You can read <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's own privacy policy</a> for more detail. The rest of the app works entirely on your device whether or not you ever buy anything.</p>
   <p>We do not sell your data, and have never sold your data, to anyone, for any purpose.</p>
 
+  <h2>Crash reports (optional)</h2>
+  <p>RollGuard has an optional switch on its home screen — off by default — to send anonymous crash reports if the app ever crashes. If you turn it on, a crash sends a technical stack trace and your device model to Sentry, a crash-reporting service, so the problem can be fixed. It never sends anything about your photos, your scan results, or your identity: no names, no device identifiers, no images, no text from your library. Reports are retained for 90 days. With the switch off, the crash-reporting software is never even started, and no connection is made. The app works identically either way.</p>
+
   <h2>Security</h2>
-  <p>Because RollGuard has no server and no central database of user data, the biggest usual security risk — a breach of stored personal information — doesn't really apply here: there's nothing on our side to breach. Your scan results live only in your own device's local storage, protected by whatever security measures your iPhone itself already provides (device passcode, encryption at rest).</p>
-  <p>The only data that exists outside your device at all is the narrow, non-identifying purchase-processing information handled by RevenueCat and Apple, described above — both maintain their own security practices and compliance obligations for that data, independent of us.</p>
+  <p>Because RollGuard has no server and no central database of user data, the biggest usual security risk — a breach of stored personal information — doesn't really apply here: there's nothing on our side to breach. Your scan results live only in your own device's local storage, protected by whatever security measures your iPhone itself already provides (device passcode, encryption at rest) — and, as described above, they contain no raw text from your photos.</p>
+  <p>The only data that exists outside your device at all is the narrow, non-identifying purchase-processing information handled by RevenueCat and Apple, and — only if you've opted in — anonymous crash reports handled by Sentry. Each maintains its own security practices and compliance obligations for that data, independent of us.</p>
   <p>If we ever became aware of an issue affecting that data, we'd investigate promptly and notify affected users and any relevant regulator as required by law. Given the scope of what's actually collected, we don't expect this to arise, but we take the obligation seriously regardless.</p>
 
   <h2>Your choices</h2>
   <ul>
     <li><strong>Keep</strong> clears the item from RollGuard's review queue and leaves the photo exactly as it is.</li>
     <li><strong>Hide</strong> moves the photo into your iPhone's own Hidden album — a standard iOS feature, protected by Face ID, Touch ID, or your passcode. This uses Apple's own PhotoKit framework; RollGuard doesn't create any separate album or storage location of its own, and the photo is never removed from your library.</li>
-    <li><strong>Delete</strong> is the only action that removes the photo itself — and it always asks Apple's system permission dialog first, the same as deleting any photo manually.</li>
+    <li><strong>Delete</strong> is the only action that removes the photo itself — and it always asks Apple's system permission dialog first, the same as deleting any photo manually. Deleted photos go to iOS's Recently Deleted album for 30 days, as with any deletion.</li>
   </ul>
   <p>RollGuard never takes any of these actions automatically or without you choosing them.</p>
 
   <h2>Your rights — EU, UK, and EEA residents (GDPR)</h2>
   <p>If you're located in the EU, UK, or EEA, data protection law (GDPR, or the UK's equivalent) gives you specific rights over any personal data processed about you. Because RollGuard processes almost everything entirely on your own device and never transmits it to us, most of these rights are already satisfied by design — there is simply no copy of your scan data on our side to access, correct, or delete.</p>
-  <p>Where RollGuard does rely on RevenueCat as a data processor, our legal basis for that processing is the performance of a contract with you — completing the purchase you've requested — and our legitimate interest in preventing fraudulent transactions.</p>
+  <p>Where RollGuard does rely on RevenueCat as a data processor, our legal basis for that processing is the performance of a contract with you — completing the purchase you've requested — and our legitimate interest in preventing fraudulent transactions. Where you opt in to crash reporting, the legal basis is your consent, which you can withdraw at any time by turning the switch off.</p>
   <p>You have the right to: access any personal data we hold about you; request correction or erasure of it; object to or restrict its processing; request a copy of it in a portable format; and lodge a complaint with your local data protection supervisory authority if you believe we haven't handled your data properly. To exercise any of these rights, contact us using the details below.</p>
-  <p style="font-size:13.5px;color:var(--ink-soft);"><em>Note: as of this policy's last update, RollGuard has no confirmed users based in the EU or EEA. We'll reassess our obligations under Article 27 of the GDPR — including whether an EU representative is required — if and when that changes.</em></p>
+  <p style="font-size:13.5px;color:var(--ink-soft);"><em>Note: we'll reassess our obligations under Article 27 of the GDPR — including whether an EU representative is required — as our EU and EEA user base develops.</em></p>
 
   <h2>Your rights — California and other US state residents (CCPA/CPRA and similar laws)</h2>
-  <p>If you're a California resident, the CCPA (as amended by the CPRA) gives you the right to know what personal information we collect, request its deletion, and opt out of its sale or sharing. RollGuard does not sell or share your personal information, and has never done so. Because the app collects no personal information beyond the narrow, non-identifying purchase-processing data described above, there is very little for these rights to act on — but you're welcome to contact us to confirm or request deletion regardless.</p>
+  <p>If you're a California resident, the CCPA (as amended by the CPRA) gives you the right to know what personal information we collect, request its deletion, and opt out of its sale or sharing. RollGuard does not sell or share your personal information, and has never done so. Because the app collects no personal information beyond the narrow, non-identifying purchase-processing data described above (and, if you opt in, anonymous crash reports), there is very little for these rights to act on — but you're welcome to contact us to confirm or request deletion regardless.</p>
   <p>Residents of other US states with similar privacy laws (including but not limited to Virginia, Colorado, Connecticut, and Utah) have comparable rights, which we extend on the same basis described above.</p>
 
   <h2>Children's privacy</h2>
-  <p>RollGuard is rated 4+ on the App Store. RollGuard never displays any sensitive imagery itself — it only detects and flags content already present in the user's own camera roll, and the user decides what happens to each item. RollGuard does not knowingly collect personal information from children, and given the app has no account system, no information is knowingly collected from anyone, of any age.</p>
+  <p>RollGuard is rated 4+ on the App Store. This rating reflects the nature of what the app is designed to detect (including sensitive imagery), not that the app displays such content itself — RollGuard shows no images beyond what's already in your own camera roll, and it blurs any photo it flags as a sensitive image until you choose to reveal it. RollGuard does not knowingly collect personal information from children, and given the app has no account system, no information is knowingly collected from anyone, of any age.</p>
 
   <h2>International data transfers</h2>
-  <p>Because RollGuard doesn't operate a server and doesn't transmit your photos or scan results anywhere, there is no cross-border transfer of that data to worry about. The only data that leaves your device at all is the narrow purchase-processing information described above, handled by RevenueCat and Apple, both of whom maintain their own compliance frameworks for international data transfers.</p>
+  <p>Because RollGuard doesn't operate a server and doesn't transmit your photos or scan results anywhere, there is no cross-border transfer of that data to worry about. The only data that leaves your device at all is the narrow purchase-processing information described above, handled by RevenueCat and Apple, and — only if you've opted in — anonymous crash reports handled by Sentry; each maintains its own compliance framework for international data transfers.</p>
+
+  <h2>Our website</h2>
+  <p>rollguard.app is a static website. It sets no cookies, runs no analytics, and doesn't track visitors. The only third-party request it makes is for its fonts, from Google Fonts.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the "last updated" date at the top of this page will change too. Continued use of RollGuard after an update means you accept the revised policy.</p>
@@ -123,13 +129,10 @@
   <h2>Contact</h2>
   <p>Questions about this policy, or to exercise any of the rights described above:</p>
   <a class="mail-link" href="mailto:support@rollguard.app">support@rollguard.app</a>
-
   <p style="margin-top:24px;"><a href="/terms.html">Read the terms &amp; legal page →</a></p>
-
   <footer>
     © 2026 RollGuard — <a href="/">back to home</a>
   </footer>
 </div>
-
 </body>
 </html>
