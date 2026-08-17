@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is public phone charging safe? What the FBI's juice-jacking warning actually means — RollGuard</title>
+<meta name="description" content="The FBI and TSA warn against public USB chargers. The attack is real; the risk to an updated iPhone is small. What juice jacking is, why there are no confirmed victims, what iOS 18.4 changed, and what to actually do.">
+<link rel="canonical" href="https://rollguard.app/guides/is-public-phone-charging-safe.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#3d514c;
+    --paper:#EEF2F0;
+    --card:#FFFFFF;
+    --teal:#0F6E56;
+    --teal-deep:#0A4E3E;
+    --mint:#DCEEE7;
+    --line:#D8DFDC;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:var(--teal-deep);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 96px;}
+  nav{max-width:720px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlink{font-size:14px;color:var(--ink-soft);text-decoration:none;}
+  .navlink:hover{color:var(--teal-deep);}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;color:var(--teal-deep);background:var(--mint);display:inline-block;padding:5px 12px;border-radius:999px;margin:40px 0 18px;}
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4.4vw,38px);letter-spacing:-0.02em;line-height:1.15;margin:0 0 14px;}
+  .lede{color:var(--ink-soft);font-size:17px;max-width:58ch;margin:0 0 40px;}
+  h2{font-family:var(--font-display);font-weight:700;font-size:20px;margin:44px 0 12px;}
+  p{color:var(--ink-soft);font-size:15.5px;margin:0 0 14px;}
+  strong{color:var(--ink);}
+  ul{color:var(--ink-soft);font-size:15.5px;padding-left:20px;margin:0 0 14px;}
+  li{margin-bottom:8px;}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;margin:24px 0;}
+  .card p{margin:0 0 12px;}
+  .card p:last-child{margin:0;}
+  .callout{background:var(--mint);border-radius:14px;padding:22px 26px;margin:32px 0;}
+  .callout p{margin:0 0 10px;color:var(--ink);}
+  .callout p:last-child{margin:0;}
+  .updated{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);margin:48px 0 0;}
+  footer{padding:40px 0 0;border-top:1px solid var(--line);margin-top:40px;font-size:13.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="../">Roll<span>Guard</span></a>
+  <a class="navlink" href="../#faq">All guides &amp; FAQ →</a>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Guide · Travel</span>
+  <h1>Is public phone charging safe? What the FBI warning actually means</h1>
+  <p class="lede">You've seen the headlines: the FBI and TSA say don't plug your phone into public USB ports. The technique they're describing — "juice jacking" — is real. The risk to an up-to-date iPhone is small, and it's worth understanding why, because the honest answer is more useful than the scary one.</p>
 
+  <h2>The short answer</h2>
+  <p>Juice jacking is a real, demonstrated attack: a modified USB port or cable that tries to pull data from your phone or push malware onto it while it charges. It's been shown at security conferences since 2011. But after more than a decade of warnings, <strong>there are no publicly documented, confirmed cases of a traveller being compromised by a public charger.</strong> The FBI's 2023 warning and the TSA's 2025 one are precautionary — sensible advice about a possible attack, not a response to a wave of victims.</p>
+  <p>Use your own charger and a wall outlet, or a power bank. That advice is correct, it's free, and it makes the whole question moot. But if you've ever plugged into an airport USB port and are now worried — the odds that anything happened are very low, and lower still if your iPhone is up to date.</p>
+
+  <h2>Why iPhones are hard to juice-jack</h2>
+  <p>USB carries power and data down the same cable, which is the whole premise of the attack. But an iPhone doesn't hand over data just because something asks:</p>
+  <ul>
+    <li><strong>"Trust This Computer?"</strong> Since 2013, an iPhone treats every new USB connection as hostile until you say otherwise. Plug into anything that tries to talk data and you get that prompt. Tap "Don't Trust" — or ignore it — and the port delivers power only. Nothing moves.</li>
+    <li><strong>USB Restricted Mode.</strong> Since 2018, if your iPhone has been locked for about an hour, its data connection over the port switches off entirely — a cable left plugged into a sleeping phone gets electricity and nothing else.</li>
+    <li><strong>iOS 18.4's stronger gate.</strong> In 2025, researchers at Graz University of Technology demonstrated "ChoiceJacking" — malicious hardware that could <em>fake the tap</em> on the Trust prompt, defeating the old defence. Apple's answer, in iOS 18.4, is that authorising a new USB data connection now requires your <strong>passcode or Face ID</strong>, not just a tap. A charger can't fake that. If your iPhone is on iOS 18.4 or later, all publicly known juice-jacking techniques are blocked.</li>
+  </ul>
+  <p>The honest caveat: this protection depends on your iPhone being <em>updated</em>. An old iPhone on an old iOS has weaker defences, and that's the one where the warnings genuinely bite.</p>
+
+  <h2>What's overstated</h2>
+  <p>You'll read that a compromised port can "steal your photos and passwords in seconds" or "install tracking software while you grab a coffee." Against an updated iPhone that hasn't been unlocked and told to trust the port, neither happens. You'll also read about "video jacking" — hidden cameras in charging kiosks recording your screen. That's a real shoulder-surfing risk, but it's about what you <em>type and view</em> at the kiosk, not about your camera roll. And a public charger cannot see photos on a phone that isn't sending them.</p>
+  <p>The gap between "demonstrated at a security conference" and "happening to travellers at airports" is wide, and nobody selling a forty-dollar privacy gadget wants to explain it.</p>
+
+  <h2>What actually helps</h2>
+  <ul>
+    <li><strong>Carry your own charger and cable, or a power bank.</strong> A wall outlet is just electricity — there's no data pin to worry about. This is the FBI's advice and it's right, mostly because it removes the question rather than because the risk was high.</li>
+    <li><strong>Keep iOS updated.</strong> iOS 18.4 or later closes the ChoiceJacking gap. If you're on something older, updating is a bigger safety step than any accessory.</li>
+    <li><strong>Never tap "Trust" on a prompt you didn't expect.</strong> If a charger triggers "Trust This Computer?", that's the charger asking for data. The answer is no.</li>
+    <li><strong>Don't use a cable you found or were given.</strong> A modified <em>cable</em> — rather than a port — is the most plausible way this attack reaches an ordinary traveller. Bring your own.</li>
+    <li><strong>A "USB data blocker"</strong> — a small adapter that physically omits the data pins — works, but on an updated iPhone it's belt-and-braces, not a necessity.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>So why is this on a camera-roll app's website?</strong> Because the charging-port scare is a good example of a privacy risk that's <em>smaller</em> than it sounds — and it's worth being clear about which risks are real. A public USB port almost certainly can't see your photos. A person holding your unlocked phone can. A border officer with your device can. The trade-in shop, the family member scrolling for one picture, the old backup on an old laptop — those are the real ways the photos in your camera roll get seen by someone else.</p>
+    <p>Worry about the phone in someone's hand, not the port on the wall.</p>
+  </div>
+
+  <div class="card">
+    <p><strong>Where RollGuard fits.</strong> RollGuard doesn't protect your phone from chargers — nothing on your phone needs to. It does the thing that matters for the real risks: it scans your camera roll, entirely on your device, for the photos you'd rather not have there when someone else is holding it — identity documents, payment cards, screenshots of passwords, sensitive images — and lets you keep, hide, or delete each one.</p>
+    <p><a href="../">See how RollGuard works →</a></p>
+  </div>
+
+  <p class="updated">Last updated 18 August 2026. Security research moves quickly and iOS defences change with each version; the specifics above reflect publicly reported findings as of this date.</p>
+
+  <footer>
+    © 2026 RollGuard · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a> · <a href="../">Home</a>
+  </footer>
+</div>
+</body>
+</html>
