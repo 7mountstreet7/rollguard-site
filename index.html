@@ -134,14 +134,26 @@
     display:flex;align-items:center;justify-content:center;padding:4px;line-height:1.25;
     opacity:0;transition:opacity 0.3s ease 0.15s;
   }
+  .tile .ask{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:var(--font-display);font-weight:700;font-size:18px;
+    opacity:0;transition:opacity .3s ease;pointer-events:none;
+  }
   .tile.flagged .redact{transform:translateY(0);}
+  .tile.flagged.ready .ask{opacity:.9;animation:askpulse 1.1s ease 2;}
   .tile.flagged:hover .redact,
-  .tile.flagged:focus-visible .redact{transform:translateY(100%);}
+  .tile.flagged:focus-visible .redact,
+  .tile.flagged.revealed .redact{transform:translateY(100%);}
   .tile.flagged:hover .label,
-  .tile.flagged:focus-visible .label{opacity:1;}
+  .tile.flagged:focus-visible .label,
+  .tile.flagged.revealed .label{opacity:1;}
+  .tile.flagged:hover .ask,
+  .tile.flagged.revealed .ask{opacity:0;}
   .tile.plain .cover{border:1px solid var(--line);}
+  @keyframes askpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
   @media (prefers-reduced-motion: reduce){
-    .tile .redact, .tile .label, .tile .cover{transition:none;}
+    .tile .redact, .tile .label, .tile .cover, .tile .ask{transition:none;}
+    .tile.flagged.ready .ask{animation:none;}
   }
   @media (max-width:640px){
     .tiles{grid-template-columns:repeat(6,1fr);}
@@ -497,7 +509,7 @@
   </footer>
 </div>
 <script>
-  // Demo grid: 24 tiles, 4 flagged. Press "Run a scan" and watch it work.
+  // Demo grid: 24 tiles, 4 flagged. Press "Run a scan" and watch it work; tap a flagged tile to see what it found.
   const TOTAL = 24;
   const flaggedIndexes = new Set([3, 9, 14, 20]);
   const labels = {
@@ -531,6 +543,14 @@
       label.className = 'label';
       label.textContent = labels[i];
       tile.appendChild(label);
+      const ask = document.createElement('div');
+      ask.className = 'ask';
+      ask.textContent = '?';
+      tile.appendChild(ask);
+      tile.addEventListener('click', () => {
+        if (!tile.classList.contains('flagged')) return;
+        tile.classList.toggle('revealed');
+      });
     }
     container.appendChild(tile);
     tiles.push({ el: tile, flagged: isFlagged, label: labels[i] });
@@ -554,8 +574,9 @@
     function tick(i) {
       if (i > 0) tiles[i - 1].el.classList.remove('checking');
       if (i >= TOTAL) {
-        status.textContent = checked + ' checked · ' + flagged + ' flagged';
+        status.textContent = checked + ' checked · ' + flagged + ' flagged — tap a flagged photo to see what it found';
         status.className = 'demo-status done';
+        tiles.forEach(t => { if (t.flagged) t.el.classList.add('ready'); });
         btn.textContent = 'Scan again';
         btn.disabled = false;
         return;
@@ -566,7 +587,7 @@
       if (t.flagged) {
         t.el.classList.remove('plain');
         t.el.classList.add('flagged');
-        t.el.setAttribute('aria-label', t.label + ' detected');
+        t.el.setAttribute('aria-label', t.label + ' detected — tap to reveal');
         flagged++;
       }
       status.textContent = 'checking ' + checked + ' of ' + TOTAL + ' · ' + flagged + ' flagged';
