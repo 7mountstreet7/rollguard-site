@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — RollGuard</title>
+<meta name="description" content="RollGuard is made by one person in Sydney. Twenty-five years in finance, ten farming oysters, and a family trip to the US that needed every phone checked — honestly, and by its own owner.">
+<link rel="canonical" href="https://rollguard.app/about.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#3d514c;
+    --paper:#EEF2F0;
+    --card:#FFFFFF;
+    --teal:#0F6E56;
+    --teal-deep:#0A4E3E;
+    --mint:#DCEEE7;
+    --line:#D8DFDC;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:var(--teal-deep);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 96px;}
+  nav{max-width:720px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlink{font-size:14px;color:var(--ink-soft);text-decoration:none;}
+  .navlink:hover{color:var(--teal-deep);}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;color:var(--teal-deep);background:var(--mint);display:inline-block;padding:5px 12px;border-radius:999px;margin:40px 0 18px;}
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4.4vw,38px);letter-spacing:-0.02em;line-height:1.15;margin:0 0 28px;}
+  .photo{width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:0 0 32px;display:block;}
+  p{color:var(--ink-soft);font-size:16px;margin:0 0 18px;}
+  strong{color:var(--ink);}
+  .sign{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--ink);margin-top:28px;}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;margin:36px 0 0;}
+  .card p{margin:0 0 12px;}
+  .card p:last-child{margin:0;}
+  .mail-link{font-family:var(--font-mono);font-size:15.5px;color:var(--teal-deep);text-decoration:none;font-weight:500;}
+  .mail-link:hover{text-decoration:underline;}
+  footer{padding:40px 0 0;border-top:1px solid var(--line);margin-top:56px;font-size:13.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="/">Roll<span>Guard</span></a>
+  <a class="navlink" href="/#guides">Guides →</a>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">About</span>
+  <h1>RollGuard is made by one person.</h1>
 
+  <!-- PHOTO: drop about.jpg into the repo root and it appears here; if the file's absent the slot hides itself. -->
+  <img class="photo" src="/about.jpg" alt="David Smith, who makes RollGuard" onerror="this.style.display='none'">
+
+  <p>That's me — David Smith, in Sydney.</p>
+
+  <p>I spent twenty-five years in finance, in Australia, London and Monaco, around confidential documents and other people's money. Then I left it and spent the last ten years farming oysters on the NSW coast, which is about as far from a trading floor as you can get.</p>
+
+  <p>The idea came before a family trip to the US. I knew <a href="/guides/can-border-officers-search-my-phone.html">border officers can look through a phone</a>, and I wanted to be able to say — honestly — that all our phones were clear before we crossed. But I also didn't want to go through my teenage sons' photos myself; that's their privacy, and it should stay theirs. What I wanted was for each of them to be able to run a check on their own phone, independently of me, and just show me the results screen — nothing flagged — without either of us looking at anything else.</p>
+
+  <p>So I looked through my own camera roll first, and found years of photos I'd taken to send to someone: a passport page for a booking, a licence for a rental, a card for a form. Then I tried to find a tool that would do that simple thing — look through your photos, on your phone, and tell you plainly what's there — without sending them anywhere or making anyone else see them. There wasn't one. So I built it.</p>
+
+  <p>I'm not a professional developer. I've been building with AI coding tools for about a year, and RollGuard is what that made possible: a small, careful app, tested against hundreds of real document types across a steadily widening set of countries, that does one thing on your phone and nothing on anyone else's. The site tells you plainly what it's good at and what it isn't, because that's the only kind of privacy app I'd trust myself.</p>
+
+  <p class="sign">— David</p>
+
+  <div class="card">
+    <p><strong>Get in touch.</strong> If you have a question, or RollGuard got something wrong on your phone, I read every email:</p>
+    <p><a class="mail-link" href="mailto:support@rollguard.app">support@rollguard.app</a></p>
+  </div>
+
+  <footer>
+    © 2026 RollGuard · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/">Home</a>
+  </footer>
+</div>
+</body>
+</html>
