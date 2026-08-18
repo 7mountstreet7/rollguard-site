@@ -84,6 +84,19 @@
   }
   .store-badge small{display:block;font-size:10.5px;font-weight:500;opacity:.8;letter-spacing:.02em;}
   .store-badge.soon{background:var(--card);color:var(--ink-soft);border:1.5px solid var(--line);cursor:default;}
+  .waitlist{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;max-width:440px;}
+  .waitlist input[type=email]{
+    flex:1;min-width:200px;font-family:var(--font-body);font-size:14.5px;
+    padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);
+  }
+  .waitlist input[type=email]:focus{outline:none;border-color:var(--teal);}
+  .waitlist button{
+    font-family:var(--font-body);font-weight:600;font-size:14.5px;padding:12px 18px;
+    border-radius:10px;border:1.5px solid transparent;background:var(--ink);color:#fff;cursor:pointer;
+  }
+  .waitlist button:hover{background:var(--teal-deep);}
+  .waitlist-note{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);margin-top:8px;}
+  .closing .waitlist{margin:22px auto 0;justify-content:center;}
   .grid-demo{margin-top:64px;}
   .grid-demo-label{
     font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
@@ -191,7 +204,7 @@
   .price-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
   .price-card.featured .price-list li{border-top-color:rgba(15,110,86,.18);}
   .price-how{font-size:13.5px;color:var(--ink-soft);margin:22px 0 0;font-style:italic;}
-  .price-card .store-badge{align-self:flex-start;margin-top:22px;}
+  .price-card .waitlist{max-width:none;}
   .faq-item{border-top:1px solid var(--line);}
   .faq-item:last-of-type{border-bottom:1px solid var(--line);}
   .faq-item summary{
@@ -249,8 +262,12 @@
       <a class="btn btn-ghost" href="#faq">Read the honest answers →</a>
     </div>
     <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
-    <!-- LAUNCH DAY: replace this span with the live badge — <a class="store-badge" href="https://apps.apple.com/app/idXXXXXXXXX"><span>Download on the<br><small>App Store</small></span></a> -->
-    <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
+    <!-- LAUNCH DAY: replace this form with the live badge — <a class="store-badge" href="https://apps.apple.com/app/idXXXXXXXXX"><span>Download on the<br><small>App Store</small></span></a> -->
+    <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+      <button type="submit">Tell me when it launches</button>
+    </form>
+    <p class="waitlist-note">One email at launch. Nothing else. Unsubscribe anytime.</p>
     <div class="grid-demo">
       <div class="grid-demo-label">
         <span>your camera roll</span>
@@ -369,8 +386,12 @@
           <li><strong>Then keeps going — works through your entire library automatically, for free</strong></li>
           <li>Shows you a real running count of what it finds, before you consider Pro</li>
         </ul>
-        <!-- LAUNCH DAY: swap for the live badge -->
-        <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
+        <!-- LAUNCH DAY: replace this form with the live badge -->
+        <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+          <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+          <button type="submit">Tell me when it launches</button>
+        </form>
+        <p class="waitlist-note">One email at launch. Nothing else.</p>
       </div>
       <div class="price-card featured">
         <span class="price-tag">One-time purchase</span>
@@ -443,8 +464,12 @@
       <h2>Find out what's actually in your photos.</h2>
       <p>The free scan checks your last 30 days completely, then keeps working through the rest of your library — showing you a real count of what's there before you decide anything.</p>
       <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
-      <!-- LAUNCH DAY: replace this span with the live badge (same markup as the hero) -->
-      <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
+      <!-- LAUNCH DAY: replace this form with the live badge (same markup as the hero) -->
+      <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+        <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+        <button type="submit">Tell me when it launches</button>
+      </form>
+      <p class="waitlist-note">One email at launch. Nothing else. Unsubscribe anytime.</p>
     </div>
   </section>
   <section id="support" class="tight">
