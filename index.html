@@ -68,7 +68,7 @@
   .btn{
     font-family:var(--font-body);font-weight:600;font-size:15px;
     padding:13px 22px;border-radius:10px;text-decoration:none;display:inline-block;
-    border:1.5px solid transparent;
+    border:1.5px solid transparent;cursor:pointer;
   }
   .btn-primary{background:var(--ink);color:#fff;}
   .btn-primary:hover{background:var(--teal-deep);}
@@ -100,23 +100,32 @@
   .grid-demo{margin-top:64px;}
   .grid-demo-label{
     font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
-    margin-bottom:14px;display:flex;justify-content:space-between;
+    margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
   }
+  .demo-status{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);}
+  .demo-status.done{color:var(--teal-deep);}
+  .demo-btn{
+    font-family:var(--font-body);font-weight:600;font-size:13px;padding:8px 14px;
+    border-radius:8px;border:1.5px solid var(--teal);background:var(--card);color:var(--teal-deep);cursor:pointer;
+  }
+  .demo-btn:hover{background:var(--mint);}
+  .demo-btn:disabled{opacity:.5;cursor:default;}
   .tiles{
     display:grid;grid-template-columns:repeat(8,1fr);gap:8px;
   }
   .tile{
     aspect-ratio:1;border-radius:8px;position:relative;overflow:hidden;
-    cursor:pointer;outline:none;border:none;padding:0;
+    cursor:pointer;outline:none;border:none;padding:0;background:transparent;
   }
   .tile:focus-visible{box-shadow:0 0 0 3px var(--teal);}
   .tile .cover{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    transition:transform 0.4s cubic-bezier(.2,.8,.2,1);
+    position:absolute;inset:0;
+    transition:transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s ease;
   }
+  .tile.checking .cover{box-shadow:inset 0 0 0 2px var(--teal);}
   .tile .redact{
     position:absolute;inset:0;background:var(--flag);
-    display:flex;align-items:center;justify-content:center;
+    transform:translateY(100%);
     transition:transform 0.4s cubic-bezier(.2,.8,.2,1);
   }
   .tile .label{
@@ -130,9 +139,9 @@
   .tile.flagged:focus-visible .redact{transform:translateY(100%);}
   .tile.flagged:hover .label,
   .tile.flagged:focus-visible .label{opacity:1;}
-  .tile.plain .cover{background:var(--card);border:1px solid var(--line);}
+  .tile.plain .cover{border:1px solid var(--line);}
   @media (prefers-reduced-motion: reduce){
-    .tile .redact, .tile .label{transition:none;}
+    .tile .redact, .tile .label, .tile .cover{transition:none;}
   }
   @media (max-width:640px){
     .tiles{grid-template-columns:repeat(6,1fr);}
@@ -263,17 +272,18 @@
     </div>
     <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
     <!-- LAUNCH DAY: replace this form with the live badge — <a class="store-badge" href="https://apps.apple.com/app/idXXXXXXXXX"><span>Download on the<br><small>App Store</small></span></a> -->
-    <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+    <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post">
       <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
       <button type="submit">Tell me when it launches</button>
     </form>
     <p class="waitlist-note">One email at launch. Nothing else. Unsubscribe anytime.</p>
     <div class="grid-demo">
       <div class="grid-demo-label">
-        <span>your camera roll</span>
-        <span>hover a tile</span>
+        <span>your camera roll — a demo</span>
+        <span class="demo-status" id="demo-status">24 photos · press scan</span>
+        <button class="demo-btn" id="demo-btn" type="button">Run a scan</button>
       </div>
-      <div class="tiles" id="tiles"></div>
+      <div class="tiles" id="tiles" aria-live="polite"></div>
     </div>
   </section>
   <section class="tight">
@@ -387,7 +397,7 @@
           <li>Shows you a real running count of what it finds, before you consider Pro</li>
         </ul>
         <!-- LAUNCH DAY: replace this form with the live badge -->
-        <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+        <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post">
           <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
           <button type="submit">Tell me when it launches</button>
         </form>
@@ -465,7 +475,7 @@
       <p>The free scan checks your last 30 days completely, then keeps working through the rest of your library — showing you a real count of what's there before you decide anything.</p>
       <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
       <!-- LAUNCH DAY: replace this form with the live badge (same markup as the hero) -->
-      <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post" target="_blank">
+      <form class="waitlist" action="https://buttondown.com/api/emails/embed-subscribe/7mountstreet7" method="post">
         <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
         <button type="submit">Tell me when it launches</button>
       </form>
@@ -487,20 +497,28 @@
   </footer>
 </div>
 <script>
+  // Demo grid: 24 tiles, 4 flagged. Press "Run a scan" and watch it work.
+  const TOTAL = 24;
   const flaggedIndexes = new Set([3, 9, 14, 20]);
   const labels = {
-    3: 'sensitive image detected',
-    9: 'payment card detected',
-    14: 'credential detected',
+    3: 'sensitive image',
+    9: 'payment card',
+    14: 'password screenshot',
     20: 'identity document'
   };
   const tones = ['#CBD9D3','#D9CFC0','#C9D6DE','#DCCFD6','#CFDACB','#D2D2C4'];
   const container = document.getElementById('tiles');
-  for (let i = 0; i < 24; i++) {
+  const status = document.getElementById('demo-status');
+  const btn = document.getElementById('demo-btn');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tiles = [];
+
+  for (let i = 0; i < TOTAL; i++) {
     const isFlagged = flaggedIndexes.has(i);
     const tile = document.createElement('button');
-    tile.className = 'tile ' + (isFlagged ? 'flagged' : 'plain');
-    tile.setAttribute('aria-label', isFlagged ? labels[i] : 'photo');
+    tile.className = 'tile plain';
+    tile.type = 'button';
+    tile.setAttribute('aria-label', 'photo');
     const cover = document.createElement('div');
     cover.className = 'cover';
     cover.style.background = tones[i % tones.length];
@@ -510,12 +528,54 @@
       redact.className = 'redact';
       tile.appendChild(redact);
       const label = document.createElement('div');
-      label.textContent = labels[i];
       label.className = 'label';
+      label.textContent = labels[i];
       tile.appendChild(label);
     }
     container.appendChild(tile);
+    tiles.push({ el: tile, flagged: isFlagged, label: labels[i] });
   }
+
+  function reset() {
+    tiles.forEach(t => {
+      t.el.className = 'tile plain';
+      t.el.setAttribute('aria-label', 'photo');
+    });
+    status.textContent = TOTAL + ' photos · press scan';
+    status.className = 'demo-status';
+  }
+
+  function runScan() {
+    btn.disabled = true;
+    reset();
+    let checked = 0, flagged = 0;
+    const step = reduceMotion ? 0 : 90;
+
+    function tick(i) {
+      if (i > 0) tiles[i - 1].el.classList.remove('checking');
+      if (i >= TOTAL) {
+        status.textContent = checked + ' checked · ' + flagged + ' flagged';
+        status.className = 'demo-status done';
+        btn.textContent = 'Scan again';
+        btn.disabled = false;
+        return;
+      }
+      const t = tiles[i];
+      t.el.classList.add('checking');
+      checked++;
+      if (t.flagged) {
+        t.el.classList.remove('plain');
+        t.el.classList.add('flagged');
+        t.el.setAttribute('aria-label', t.label + ' detected');
+        flagged++;
+      }
+      status.textContent = 'checking ' + checked + ' of ' + TOTAL + ' · ' + flagged + ' flagged';
+      if (step === 0) tick(i + 1); else setTimeout(() => tick(i + 1), step);
+    }
+    tick(0);
+  }
+
+  btn.addEventListener('click', runScan);
 </script>
 </body>
 </html>
