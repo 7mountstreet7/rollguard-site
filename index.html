@@ -171,15 +171,27 @@
   @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
   .price-card{
     background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);
-    padding:40px;
+    padding:40px;position:relative;display:flex;flex-direction:column;
   }
+  .price-card.featured{background:var(--mint);border-color:var(--teal);}
+  .price-tag{
+    font-family:var(--font-mono);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--teal-deep);background:var(--card);border:1px solid var(--line);
+    border-radius:999px;padding:4px 10px;display:inline-block;margin-bottom:14px;align-self:flex-start;
+  }
+  .price-card.featured .price-tag{background:var(--teal);color:#fff;border-color:var(--teal);}
   .price-head{font-family:var(--font-display);font-weight:700;font-size:22px;margin:0 0 6px;}
+  .price-amount{font-family:var(--font-display);font-weight:700;font-size:34px;letter-spacing:-0.02em;margin:0 0 6px;color:var(--ink);}
+  .price-note{font-family:var(--font-body);font-weight:500;font-size:14px;color:var(--ink-soft);margin-left:6px;}
   .price-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 24px;}
   .price-list{list-style:none;margin:0;padding:0;}
   .price-list li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);
     font-size:14.5px;color:var(--ink-soft);}
   .price-list li:first-child{border-top:none;}
-  .price-list li::before{content:'—';color:var(--teal);flex-shrink:0;}
+  .price-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+  .price-card.featured .price-list li{border-top-color:rgba(15,110,86,.18);}
+  .price-how{font-size:13.5px;color:var(--ink-soft);margin:22px 0 0;font-style:italic;}
+  .price-card .store-badge{align-self:flex-start;margin-top:22px;}
   .faq-item{border-top:1px solid var(--line);}
   .faq-item:last-of-type{border-bottom:1px solid var(--line);}
   .faq-item summary{
@@ -348,22 +360,29 @@
     <p class="section-sub">The free version isn't a locked demo — it's a genuinely complete scan that keeps working through your whole library on its own, for as long as you leave it running. Pro unlocks acting on everything it finds.</p>
     <div class="price-grid">
       <div class="price-card">
+        <span class="price-tag">Start here</span>
         <p class="price-head">RollGuard Free</p>
+        <p class="price-amount">$0</p>
         <p class="price-sub">No sign-up, no trial period, no limits on how often you use it.</p>
         <ul class="price-list">
           <li>Checks your last 30 days fully — every category, real results</li>
           <li><strong>Then keeps going — works through your entire library automatically, for free</strong></li>
           <li>Shows you a real running count of what it finds, before you consider Pro</li>
         </ul>
+        <!-- LAUNCH DAY: swap for the live badge -->
+        <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
       </div>
-      <div class="price-card">
+      <div class="price-card featured">
+        <span class="price-tag">One-time purchase</span>
         <p class="price-head">RollGuard Pro</p>
-        <p class="price-sub">A single one-time purchase. Price shown on the App Store in your local currency.</p>
+        <p class="price-amount">US$19.99 <span class="price-note">once</span></p>
+        <p class="price-sub">Shown in your local currency on the App Store. No subscription — ever.</p>
         <ul class="price-list">
           <li>Unlocks the review queue for everything beyond your free 30 days — no scrolling through thousands of photos to track down older flagged items yourself</li>
           <li>Unlocks full control — choose exactly what to scan for, every time</li>
           <li>Pay once, use forever — no renewals, no reminders</li>
         </ul>
+        <p class="price-how">Unlock inside the app, after your free scan shows you what's there.</p>
       </div>
     </div>
   </section>
