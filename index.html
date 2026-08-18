@@ -74,7 +74,16 @@
   .btn-primary:hover{background:var(--teal-deep);}
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
   .btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);}
-  .cta-note{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);}
+  .trust-line{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);margin-top:16px;}
+  .trust-line span{margin:0 4px;}
+  .store-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#fff;border-radius:10px;padding:10px 18px;
+    text-decoration:none;font-family:var(--font-body);font-size:14px;font-weight:600;
+    margin-top:22px;
+  }
+  .store-badge small{display:block;font-size:10.5px;font-weight:500;opacity:.8;letter-spacing:.02em;}
+  .store-badge.soon{background:var(--card);color:var(--ink-soft);border:1.5px solid var(--line);cursor:default;}
   .grid-demo{margin-top:64px;}
   .grid-demo-label{
     font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
@@ -156,6 +165,7 @@
   .why-title{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0 0 8px;}
   .why-body{color:var(--ink-soft);font-size:14.5px;margin:0;}
   .why-link{margin-top:10px;font-size:14px;}
+  .guide-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--teal-deep);letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px;}
   @media (max-width:640px){.why-grid{grid-template-columns:1fr;}}
   .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
@@ -190,8 +200,11 @@
   .faq-a p{margin:0 0 12px;}
   .faq-a p:last-child{margin-bottom:0;}
   .faq-a strong{color:var(--ink);}
+  .closing{background:var(--mint);border-radius:var(--radius);padding:44px 40px;text-align:center;}
+  .closing h2{margin-bottom:10px;}
+  .closing p{color:var(--ink-soft);font-size:16px;max-width:48ch;margin:0 auto 6px;}
   .support-card{
-    background:var(--mint);border-radius:var(--radius);padding:36px 40px;
+    background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:36px 40px;
   }
   .mail-link{
     font-family:var(--font-mono);font-size:16px;color:var(--teal-deep);text-decoration:none;
@@ -221,9 +234,11 @@
     <p class="lede">RollGuard scans your photos for identity documents like passports and driver's licences, payment cards, screenshots of old passwords and credentials, and sensitive images, without any of it ever leaving your phone.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#how">See how it works</a>
-      <a class="btn btn-ghost" href="#faq">Honest answers →</a>
+      <a class="btn btn-ghost" href="#faq">Read the honest answers →</a>
     </div>
-    <p class="cta-note" style="margin-top:14px;">Launching soon on the App Store.</p>
+    <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
+    <!-- LAUNCH DAY: replace this span with the live badge — <a class="store-badge" href="https://apps.apple.com/app/idXXXXXXXXX"><span>Download on the<br><small>App Store</small></span></a> -->
+    <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
     <div class="grid-demo">
       <div class="grid-demo-label">
         <span>your camera roll</span>
@@ -268,25 +283,21 @@
         <span class="why-icon">💼</span>
         <p class="why-title">Handing over a work phone</p>
         <p class="why-body">IT policies, MDM tools, and shared backups can all reach your camera roll. Run a sweep before it's someone else's to manage.</p>
-        <p class="why-body why-link"><a href="/guides/who-can-see-my-photos-when-i-hand-over-my-phone.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
         <span class="why-icon">📱</span>
         <p class="why-title">Selling or trading in</p>
         <p class="why-body">Backups carry everything forward, even what you meant to delete years ago. Check before you back up and hand it off.</p>
-        <p class="why-body why-link"><a href="/guides/before-you-sell-or-trade-in-your-iphone.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
         <span class="why-icon">👨‍👩‍👧</span>
         <p class="why-title">Handing your phone to family</p>
         <p class="why-body">Kids playing games, grandparents scrolling photos — a quick sweep first means nothing sensitive is one swipe away.</p>
-        <p class="why-body why-link"><a href="/guides/who-can-see-my-photos-when-i-hand-over-my-phone.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
         <span class="why-icon">✈️</span>
         <p class="why-title">Before you travel</p>
         <p class="why-body">Border checks, lost phones, hotel WiFi — travel light on sensitive documents and old passwords, not just photos.</p>
-        <p class="why-body why-link"><a href="/guides/can-border-officers-search-my-phone.html">Read the guide →</a></p>
       </div>
     </div>
   </section>
@@ -295,31 +306,37 @@
     <p class="section-sub">Honest answers to the questions people actually ask about what's on their phone — which risks are real, which are overstated, and what to do.</p>
     <div class="why-grid">
       <div class="why-card">
+        <p class="guide-tag">Travel</p>
         <p class="why-title">Can border officers search my phone?</p>
         <p class="why-body">Yes — in Australia, the US and the UK, without a warrant. What the law says, what refusing costs, and what actually helps.</p>
         <p class="why-body why-link"><a href="/guides/can-border-officers-search-my-phone.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
+        <p class="guide-tag">Travel</p>
         <p class="why-title">Is public phone charging safe?</p>
         <p class="why-body">The FBI warning is real; the risk to an updated iPhone is small. Why there are no confirmed victims, and what iOS 18.4 changed.</p>
         <p class="why-body why-link"><a href="/guides/is-public-phone-charging-safe.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
+        <p class="guide-tag">Your photos</p>
         <p class="why-title">What's in my camera roll that I've forgotten?</p>
         <p class="why-body">The passport photo for a booking, the card for a form, the password screenshot — why they're there and why they outlive their purpose.</p>
         <p class="why-body why-link"><a href="/guides/whats-in-my-camera-roll-that-ive-forgotten.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
+        <p class="guide-tag">Selling &amp; trade-in</p>
         <p class="why-title">Before you sell or trade in your iPhone</p>
         <p class="why-body">Erasing works — but your photos aren't only on the phone any more. Sweep before you back up, not just before you sell.</p>
         <p class="why-body why-link"><a href="/guides/before-you-sell-or-trade-in-your-iphone.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
+        <p class="guide-tag">Your photos</p>
         <p class="why-title">Should I delete photos of my ID?</p>
         <p class="why-body">Mostly, yes. When to delete, when to keep, and where to keep the ones you need — somewhere better than your camera roll.</p>
         <p class="why-body why-link"><a href="/guides/should-i-delete-photos-of-my-id.html">Read the guide →</a></p>
       </div>
       <div class="why-card">
+        <p class="guide-tag">Your photos</p>
         <p class="why-title">Who can see my photos when I hand over my phone?</p>
         <p class="why-body">Repair shops, colleagues, family, buyers, officers. No hacking required — just a person, a phone, and a few seconds.</p>
         <p class="why-body why-link"><a href="/guides/who-can-see-my-photos-when-i-hand-over-my-phone.html">Read the guide →</a></p>
@@ -402,7 +419,16 @@
       <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning (iOS 17 and later). Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connections RollGuard makes are for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos — and, only if you opt in, anonymous crash reports to Sentry, which get a stack trace and device model and nothing about your photos either. With the crash-report switch off, there's no second connection at all.</p></div>
     </details>
   </section>
-  <section id="support">
+  <section class="tight">
+    <div class="closing">
+      <h2>Find out what's actually in your photos.</h2>
+      <p>The free scan checks your last 30 days completely, then keeps working through the rest of your library — showing you a real count of what's there before you decide anything.</p>
+      <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
+      <!-- LAUNCH DAY: replace this span with the live badge (same markup as the hero) -->
+      <span class="store-badge soon"><span><small>Coming soon to the</small>App Store</span></span>
+    </div>
+  </section>
+  <section id="support" class="tight">
     <h2>Support</h2>
     <div class="support-card">
       <p style="margin:0 0 14px;color:var(--ink-soft);">Need help, have feedback, or found a bug? Get in touch directly:</p>
