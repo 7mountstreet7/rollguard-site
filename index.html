@@ -177,6 +177,9 @@
   h2{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.4vw,32px);
     letter-spacing:-0.01em;margin:0 0 14px;}
   .section-sub{color:var(--ink-soft);max-width:52ch;margin:0 0 40px;font-size:16px;}
+  .prose p{color:var(--ink-soft);font-size:16px;max-width:62ch;margin:0 0 16px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--ink);}
   .privacy-row{display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
   .device{flex-shrink:0;width:120px;height:220px;border:2.5px solid var(--ink);border-radius:22px;
     position:relative;}
@@ -327,6 +330,15 @@
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
     </div>
   </section>
+  <section class="tight" id="method">
+    <h2>How RollGuard reads a photo</h2>
+    <p class="section-sub">Most photo scanners stop at "this looks like an ID." RollGuard reads it.</p>
+    <div class="prose">
+      <p>When RollGuard checks a photo, it reads the text in the image, works out what kind of document it's looking at and where it's from, and then checks it against the document's own rules — the <strong>machine-readable zone</strong> on a passport or ID card, the <strong>checksum</strong> on a Medicare card or payment card — before it flags anything for you. In the review queue, that's the difference between "looks like a passport" and "passport, MRZ verified."</p>
+      <p>That's the difference between a guess and a reading. It's the kind of checking normally done by tools companies use to find leaked documents — running on your phone, for you, and nowhere else.</p>
+      <p>Because RollGuard reads documents, it can also miss what it can't read: blurred, cropped, or badly lit photos of IDs may not be flagged. That's why the results screen tells you what was checked — and what wasn't.</p>
+    </div>
+  </section>
   <section class="tight">
     <h2>Why this matters</h2>
     <p class="section-sub">Same scan, same on-device engine — these are just the moments people actually reach for it.</p>
@@ -430,9 +442,19 @@
       </div>
     </div>
   </section>
+  <section class="tight" id="icloud">
+    <h2>Photos stored in iCloud</h2>
+    <p class="section-sub">RollGuard reads what's on the phone — and tells you plainly when something isn't.</p>
+    <div class="prose">
+      <p>If your iPhone uses <strong>"Optimise iPhone Storage"</strong> — and most do — many of your older photos aren't actually on your phone. What's on the phone is a small preview; the original lives in iCloud.</p>
+      <p>RollGuard reads what's on the phone. It can't read a preview, and it won't pretend it did: if photos couldn't be checked, the results screen tells you exactly how many, and they're checked automatically once they're downloaded.</p>
+      <p>To include everything: <strong>Settings → Photos → Download and Keep Originals</strong>, plug the phone in on Wi‑Fi, and give it time — a large library can take a night and a lot of storage. Once you've reviewed everything, you can switch back to Optimise and hand the space back to iCloud.</p>
+      <p>If your library is bigger than your phone's storage, downloading everything isn't possible — RollGuard will check what's there and tell you plainly how much it couldn't.</p>
+    </div>
+  </section>
   <section class="tight">
     <h2>What it's not good at</h2>
-    <p class="section-sub">RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It reads printed text (not handwriting), works best on clear photos, uses Apple's own model for sensitive images, and deliberately errs toward asking. It shows you what it found and lets you decide.</p>
+    <p class="section-sub">RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It reads printed text (not handwriting), works best on clear photos, uses Apple's own model for sensitive images, and deliberately errs toward asking. It can only read photos that are actually on your phone — photos stored only in iCloud are counted, not checked. It shows you what it found and lets you decide.</p>
   </section>
   <section class="tight" id="faq">
     <h2>A few honest answers</h2>
@@ -446,6 +468,13 @@
         <p>When RollGuard scans a photo, the text it recognises is examined on your phone and then discarded. For a photo that's flagged, RollGuard keeps just enough to show you the result: which photo it was, what kind of thing it found, and a <strong>masked fragment</strong> — the same "•••• 4242" you see in the review queue. The full text of the photo is never stored.</p>
         <p>For a photo that isn't flagged, RollGuard keeps only that it was checked, when, and basic photo metadata — no text, no content, no record of what was in it. Photos beyond your free 30-day window that the background check counts but can't show you aren't stored at all; only the counts persist — how many, by category, and how many photos were checked — nothing about which photos.</p>
         <p>Because RollGuard stores no raw text from your photos, there's no hidden index of your library sitting on the device. A backup carries the same masked view you see in the queue — no text or fragments a person could use. Whatever action you take, RollGuard has already forgotten the text it saw.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Why does RollGuard say some photos couldn't be checked?</summary>
+      <div class="faq-a">
+        <p>If your iPhone uses <strong>"Optimise iPhone Storage,"</strong> many of your older photos live in iCloud, with only a small preview on the phone. RollGuard reads what's on the phone — it can't read a preview, so those photos are counted as unchecked, never quietly marked as fine. The results screen tells you exactly how many.</p>
+        <p>To include them: <strong>Settings → Photos → Download and Keep Originals</strong>, plug the phone in on Wi‑Fi, and give it time — a large library can take a night. Downloaded photos are checked automatically on the next scan. If your library is bigger than your phone's storage, RollGuard checks what's there and tells you plainly how much it couldn't.</p>
       </div>
     </details>
     <details class="faq-item">
@@ -473,6 +502,7 @@
       <div class="faq-a">
         <p><strong>Handwriting.</strong> RollGuard reads printed text. A handwritten note — a password on a sticky note, a signature on the back of a card — is largely invisible to it. If you know handwritten secrets live in your photos, that's a search only your eyes can do.</p>
         <p><strong>Blurry, angled, or dark photos.</strong> Detection is only as good as what can be read. A crisp screenshot is easy; a passport photographed at an angle in bad light may slip through. When RollGuard misses something, it's usually because the text simply couldn't be recognised.</p>
+        <p><strong>Photos stored only in iCloud.</strong> With "Optimise iPhone Storage" on, older photos may not be on the phone to read. RollGuard counts them as unchecked and says so — see the question above for how to include them.</p>
         <p><strong>Sensitive images.</strong> This check is Apple's own model, running on your phone. It's good, and it's private — but it's Apple's, with its own judgement about what counts. RollGuard can't tune it, only report it.</p>
         <p><strong>False alarms.</strong> RollGuard deliberately errs toward asking. A news article about driving licences, a receipt with a long number, an ID card that's already expired — some of what it flags won't matter to you. That's by design: a flag is a question for your review, never an accusation. Better a few unnecessary questions than a missed passport.</p>
       </div>
