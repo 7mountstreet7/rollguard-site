@@ -279,7 +279,7 @@
 </nav>
 <div class="wrap">
   <section class="hero" id="top">
-    <span class="eyebrow">iOS · fully on-device</span>
+    <span class="eyebrow">iOS 17+ · fully on-device</span>
     <h1>Know what's hiding in your camera roll — before you hand over your phone.</h1>
     <p class="lede">RollGuard scans your photos for identity documents like passports and driver's licences, payment cards, screenshots of old passwords and credentials, and sensitive images, without any of it ever leaving your phone.</p>
     <div class="cta-row">
@@ -325,9 +325,9 @@
     <p class="section-sub">Every scan runs the same four checks, on-device, and reports back plainly — no invented accuracy scores, no vague warnings.</p>
     <div class="log-card">
       <div class="log-line"><span class="log-tag">identity documents</span><span class="log-desc">passports, driver's licences, national ID cards, national medical cards, national tax identifiers</span></div>
-      <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check</span></div>
+      <div class="log-line"><span class="log-tag">payment cards</span><span class="log-desc">card numbers, verified with a Luhn check — and card backs</span></div>
       <div class="log-line"><span class="log-tag">secrets &amp; credentials</span><span class="log-desc">passwords, one-time codes, banking, seed phrases — in screenshots; WiFi and router credentials in any photo</span></div>
-      <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">on-device detection, iOS 17 and later<span class="cursor"></span></span></div>
+      <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">Apple's on-device detection<span class="cursor"></span></span></div>
     </div>
   </section>
   <section class="tight" id="method">
@@ -448,7 +448,7 @@
     <div class="prose">
       <p>If your iPhone uses <strong>"Optimise iPhone Storage"</strong> — and most do — many of your older photos aren't actually on your phone. What's on the phone is a small preview; the original lives in iCloud.</p>
       <p>RollGuard reads what's on the phone. It can't read a preview, and it won't pretend it did: if photos couldn't be checked, the results screen tells you exactly how many, and they're checked automatically once they're downloaded.</p>
-      <p>To include everything: <strong>Settings → Photos → Download and Keep Originals</strong>, plug the phone in on Wi‑Fi, and give it time — a large library can take a night and a lot of storage. Once you've reviewed everything, you can switch back to Optimise and hand the space back to iCloud.</p>
+      <p>To include everything: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, the setting is under Settings → Photos), plug the phone in on Wi‑Fi, and give it time — a large library can take a night and a lot of storage. Once you've reviewed everything, you can switch back to Optimise and hand the space back to iCloud.</p>
       <p>If your library is bigger than your phone's storage, downloading everything isn't possible — RollGuard will check what's there and tell you plainly how much it couldn't.</p>
     </div>
   </section>
@@ -474,7 +474,7 @@
       <summary>Why does RollGuard say some photos couldn't be checked?</summary>
       <div class="faq-a">
         <p>If your iPhone uses <strong>"Optimise iPhone Storage,"</strong> many of your older photos live in iCloud, with only a small preview on the phone. RollGuard reads what's on the phone — it can't read a preview, so those photos are counted as unchecked, never quietly marked as fine. The results screen tells you exactly how many.</p>
-        <p>To include them: <strong>Settings → Photos → Download and Keep Originals</strong>, plug the phone in on Wi‑Fi, and give it time — a large library can take a night. Downloaded photos are checked automatically on the next scan. If your library is bigger than your phone's storage, RollGuard checks what's there and tells you plainly how much it couldn't.</p>
+        <p>To include them: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, the setting is under Settings → Photos), plug the phone in on Wi‑Fi, and give it time — a large library can take a night. Downloaded photos are checked automatically on the next scan. If your library is bigger than your phone's storage, RollGuard checks what's there and tells you plainly how much it couldn't.</p>
       </div>
     </details>
     <details class="faq-item">
@@ -508,8 +508,17 @@
       </div>
     </details>
     <details class="faq-item">
+      <summary>Can't I just search my photos for "passport"?</summary>
+      <div class="faq-a">
+        <p>You can, and if you're looking for one photo you remember taking, that's exactly what search is for — and it's free.</p>
+        <p>RollGuard does a different job. Search finds what you ask for; a scan finds what you forgot to ask about. Checking your library by search means thinking of every term — passport, licence, Medicare card, bank card, the WiFi password screenshot, the backup codes — and you can't search for the one you've forgotten. RollGuard runs every check in one pass and tells you what it found, what it didn't, and how many photos it couldn't read.</p>
+        <p>There's also a difference in what "found" means. Search shows you things that <em>look like</em> passports — including news articles and airport signs — and misses things that don't look like anything, like a password sitting in a screenshot of a message. RollGuard reads the document and checks it against its own rules: the machine-readable zone on a passport, the checksum on a card. That's what "MRZ verified" means in the review queue.</p>
+        <p>And search just finds; it doesn't help you decide. RollGuard keeps a queue — keep, hide, or delete, each one your call — and remembers what you've already reviewed, so next month's scan only asks about what's new.</p>
+      </div>
+    </details>
+    <details class="faq-item">
       <summary>What Apple technologies does RollGuard actually use?</summary>
-      <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning (iOS 17 and later). Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connections RollGuard makes are for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos — and, only if you opt in, anonymous crash reports to Sentry, which get a stack trace and device model and nothing about your photos either. With the crash-report switch off, there's no second connection at all.</p></div>
+      <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning. RollGuard runs on iOS 17 and later, so these checks are available on every phone it installs on. Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connections RollGuard makes are for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos — and, only if you opt in, anonymous crash reports to Sentry, which get a stack trace and device model and nothing about your photos either. With the crash-report switch off, there's no second connection at all.</p></div>
     </details>
   </section>
   <section class="tight">
