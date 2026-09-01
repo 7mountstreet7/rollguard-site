@@ -9,6 +9,8 @@ Files linked from /press.html:
 - `rollguard-preview-29s.mp4` — App preview film, 29s, silent — ✓ in repo (also plays on the index page)
 - `rollie.png` — Rollie the RollGuard mascot — ✓ in repo
 - `rgm007.png` — Campaign creative sample (later)
-- `founder-photo.jpg` — Founder photo, David on the oyster lease (later)
+- `founder-photo.jpg` — Founder photo, David on the oyster lease — ✓ in repo
 
 David adds files via GitHub web (Add file → Upload files) or by copying them in locally; filenames must match exactly, case-sensitive — lowercase extensions.
+
+Photos are committed EXIF-stripped: GPS, device, and capture metadata removed losslessly before publish (image bytes untouched). The founder photo arrived 2026-09-01 with GPS embedded and was stripped in-repo.
