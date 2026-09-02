@@ -459,15 +459,15 @@
     <h2>Photos stored in iCloud</h2>
     <p class="section-sub">RollGuard reads what's on the phone — and tells you plainly when something isn't.</p>
     <div class="prose">
-      <p>If your iPhone uses <strong>"Optimise iPhone Storage"</strong> — and most do — many of your older photos aren't actually on your phone. What's on the phone is a small preview; the original lives in iCloud.</p>
-      <p>RollGuard reads what's on the phone. It can't read a preview, and it won't pretend it did: if photos couldn't be checked, the results screen tells you exactly how many, and they're checked automatically once they're downloaded.</p>
-      <p>To include everything: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, the setting is under Settings → Photos), plug the phone in on Wi‑Fi, and give it time — a large library can take a night and a lot of storage. Once you've reviewed everything, you can switch back to Optimise and hand the space back to iCloud.</p>
-      <p>If your library is bigger than your phone's storage, downloading everything isn't possible — RollGuard will check what's there and tell you plainly how much it couldn't.</p>
+      <p>If your iPhone uses <strong>"Optimise iPhone Storage"</strong>, iOS may move some original photos to iCloud — but only when your phone is genuinely short of space, and it takes videos and app data first. Many phones with Optimise on still hold every photo, and RollGuard checks all of them normally.</p>
+      <p>When some originals really are stored only in iCloud, RollGuard won't pretend otherwise: the results screen tells you exactly how many couldn't be checked, and roughly when they're from.</p>
+      <p><strong>Two ways to check them.</strong> RollGuard Pro can fetch and check them one at a time over Wi‑Fi — a download only, nothing uploaded, and no storage settings changed. Or download everything yourself: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, under Settings → Photos) — best done overnight on Wi‑Fi and charge for a large library. They're checked on your next scan, and once you've reviewed everything you can switch back to Optimise.</p>
+      <p>And if your library is bigger than your phone's storage, downloading everything isn't possible — RollGuard Pro's one-at-a-time check is built for exactly that.</p>
     </div>
   </section>
   <section class="tight">
     <h2>What it's not good at</h2>
-    <p class="section-sub">RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It reads printed text (not handwriting), works best on clear photos, uses Apple's own model for sensitive images, and deliberately errs toward asking. It can only read photos that are actually on your phone — photos stored only in iCloud are counted, not checked. It shows you what it found and lets you decide.</p>
+    <p class="section-sub">RollGuard is a thorough second pair of eyes, not a guarantee. It won't tell you your library is "safe," because it can't know that — no scanner can. It reads printed text (not handwriting), works best on clear photos, uses Apple's own model for sensitive images, and deliberately errs toward asking. It can only read photos that are actually on your phone — photos stored only in iCloud are counted, not checked, until you download them or ask RollGuard Pro to fetch and check them one at a time. It shows you what it found and lets you decide.</p>
   </section>
   <section class="tight" id="faq">
     <h2>A few honest answers</h2>
@@ -487,8 +487,12 @@
       <summary>Why does RollGuard say some photos couldn't be checked?</summary>
       <div class="faq-a">
         <p>If your iPhone uses <strong>"Optimise iPhone Storage,"</strong> many of your older photos live in iCloud, with only a small preview on the phone. RollGuard reads what's on the phone — it can't read a preview, so those photos are counted as unchecked, never quietly marked as fine. The results screen tells you exactly how many.</p>
-        <p>To include them: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, the setting is under Settings → Photos), plug the phone in on Wi‑Fi, and give it time — a large library can take a night. Downloaded photos are checked automatically on the next scan. If your library is bigger than your phone's storage, RollGuard checks what's there and tells you plainly how much it couldn't.</p>
+        <p>To include them: <strong>Settings → Apps → Photos → Download and Keep Originals</strong> (on iOS 17, the setting is under Settings → Photos), plug the phone in on Wi‑Fi, and give it time — a large library can take a night; downloaded photos are checked automatically on the next scan. Or RollGuard Pro can fetch and check them one at a time over Wi‑Fi, without changing your storage settings. If your library is bigger than your phone's storage, RollGuard checks what's there and tells you plainly how much it couldn't.</p>
       </div>
+    </details>
+    <details class="faq-item">
+      <summary>Just moved to a new iPhone?</summary>
+      <div class="faq-a"><p>While iCloud is still syncing your library to the new phone, the unchecked count will be large — that's photos that haven't finished downloading yet, and the number falls on its own as the sync completes. Re-scan after the sync, or RollGuard Pro can check them now, one at a time over Wi‑Fi.</p></div>
     </details>
     <details class="faq-item">
       <summary>What do "Keep," "Hide," and "Delete" actually do?</summary>
@@ -515,7 +519,7 @@
       <div class="faq-a">
         <p><strong>Handwriting.</strong> RollGuard reads printed text. A handwritten note — a password on a sticky note, a signature on the back of a card — is largely invisible to it. If you know handwritten secrets live in your photos, that's a search only your eyes can do.</p>
         <p><strong>Blurry, angled, or dark photos.</strong> Detection is only as good as what can be read. A crisp screenshot is easy; a passport photographed at an angle in bad light may slip through. When RollGuard misses something, it's usually because the text simply couldn't be recognised.</p>
-        <p><strong>Photos stored only in iCloud.</strong> With "Optimise iPhone Storage" on, older photos may not be on the phone to read. RollGuard counts them as unchecked and says so — see the question above for how to include them.</p>
+        <p><strong>Photos stored only in iCloud.</strong> With "Optimise iPhone Storage" on, older photos may not be on the phone to read. RollGuard counts them as unchecked and says so — see the question above for how to include them, or RollGuard Pro can fetch and check them one at a time over Wi‑Fi, without changing your storage settings.</p>
         <p><strong>Sensitive images.</strong> This check is Apple's own model, running on your phone. It's good, and it's private — but it's Apple's, with its own judgement about what counts. RollGuard can't tune it, only report it.</p>
         <p><strong>False alarms.</strong> RollGuard deliberately errs toward asking. A news article about driving licences, a receipt with a long number, an ID card that's already expired — some of what it flags won't matter to you. That's by design: a flag is a question for your review, never an accusation. Better a few unnecessary questions than a missed passport.</p>
       </div>
@@ -531,7 +535,7 @@
     </details>
     <details class="faq-item">
       <summary>What Apple technologies does RollGuard actually use?</summary>
-      <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning. RollGuard runs on iOS 17 and later, so these checks are available on every phone it installs on. Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connections RollGuard makes are for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos — and, only if you opt in, anonymous crash and error reports to Sentry, which get a stack trace and device model and nothing about your photos either. With the crash-report switch off, there's no second connection at all.</p></div>
+      <div class="faq-a"><p>Text in your photos is read by Vision, Apple's on-device recognition framework — the same technology behind Live Text. Sensitive images are identified by Apple's Sensitive Content Analysis, the on-device model that powers iOS's own Sensitive Content Warning. RollGuard runs on iOS 17 and later, so these checks are available on every phone it installs on. Access to your library goes through PhotoKit: Delete goes through iOS's own confirmation dialog, and Hide moves the photo into your iPhone's Hidden album. RollGuard adds detection logic on top; it doesn't add servers, accounts, or third-party analytics. The only network connections RollGuard makes on its own are for the Pro purchase — Apple's in-app purchase, handled through RevenueCat, which receives anonymous purchase data and nothing about your photos — and, only if you opt in, anonymous crash and error reports to Sentry, which get a stack trace and device model and nothing about your photos either. And, only when you ask RollGuard to check photos stored in iCloud, it downloads your own originals from your iCloud to your phone through Apple's Photos system — a download only; nothing is sent back. With the crash-report switch off, the only other connection is the one you start yourself when you ask it to check iCloud photos.</p></div>
     </details>
   </section>
   <section class="tight">
@@ -566,10 +570,10 @@
   const TOTAL = 24;
   const flaggedIndexes = new Set([3, 9, 14, 20]);
   const labels = {
-    3: 'sensitive image',
+    3: 'identity document',
     9: 'payment card',
     14: 'password screenshot',
-    20: 'identity document'
+    20: 'sensitive image'
   };
   const tones = ['#CBD9D3','#D9CFC0','#C9D6DE','#DCCFD6','#CFDACB','#D2D2C4'];
   const container = document.getElementById('tiles');
