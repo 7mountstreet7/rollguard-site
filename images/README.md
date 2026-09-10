@@ -9,3 +9,5 @@ Files referenced by the site:
 David adds images via GitHub web (Add file → Upload files) or by copying them in locally; filenames must match exactly, case-sensitive — lowercase extensions (`.jpg`, not `.JPG`; GitHub Pages is case-sensitive even though Windows isn't).
 
 Photos are committed EXIF-stripped: GPS, device, and capture metadata removed losslessly before publish (image bytes untouched). `about-on-the-water.jpg` arrived 2026-09-01 with GPS embedded and was stripped in-repo.
+
+Campaign artwork, including the Rollie mascot, is AI-generated and carries embedded C2PA (Content Credentials) provenance. The photographs are not.

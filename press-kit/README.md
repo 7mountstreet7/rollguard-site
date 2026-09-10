@@ -14,3 +14,5 @@ Files linked from /press.html:
 David adds files via GitHub web (Add file → Upload files) or by copying them in locally; filenames must match exactly, case-sensitive — lowercase extensions.
 
 Photos are committed EXIF-stripped: GPS, device, and capture metadata removed losslessly before publish (image bytes untouched). The founder photo arrived 2026-09-01 with GPS embedded and was stripped in-repo.
+
+Campaign artwork, including the Rollie mascot, is AI-generated and carries embedded C2PA (Content Credentials) provenance. The photographs are not.
