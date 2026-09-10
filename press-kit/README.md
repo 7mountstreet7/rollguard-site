@@ -8,7 +8,9 @@ Files linked from /press.html:
 - `screenshots-v3.zip` — Raw app screenshots (status bars cropped per the standing stills condition; 1179×2379) — ✓ in repo
 - `rollguard-preview-29s.mp4` — App preview film, 29s, silent — ✓ in repo (also plays on the index page)
 - `rollie.png` — Rollie the RollGuard mascot — ✓ in repo
-- `rgm007.png` — Campaign creative sample (later)
+- `rgm007.png` — Campaign creative sample — ✓ in repo
+
+Also in this folder, not linked from the press page: `rgm005.png`, `rgm006.png` — campaign creative samples from the same set as `rgm007.png`.
 - `founder-photo.jpg` — Founder photo, David on the oyster lease — ✓ in repo
 
 David adds files via GitHub web (Add file → Upload files) or by copying them in locally; filenames must match exactly, case-sensitive — lowercase extensions.
