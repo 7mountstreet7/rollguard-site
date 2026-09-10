@@ -335,7 +335,7 @@
       <div class="log-line"><span class="log-tag">sensitive images</span><span class="log-desc">Apple's on-device detection<span class="cursor"></span></span></div>
     </div>
     <div class="film-card">
-      <video controls playsinline preload="metadata" width="886" height="1920" src="/press-kit/rollguard-preview-scored.mp4"></video>
+      <video controls playsinline preload="metadata" width="886" height="1920" src="/press-kit/rollguard-preview-scored.mp4#t=0.6"></video>
       <p class="film-caption">With sound — the whole flow.</p>
     </div>
   </section>
@@ -641,6 +641,20 @@
   }
 
   btn.addEventListener('click', runScan);
+
+  // The film's src carries #t=0.6 so it RESTS on the Home screen instead of the
+  // onboarding permission screen (there is no poster image by design - a removed
+  // asset cannot go stale). But a media fragment also sets where playback BEGINS,
+  // and the score starts at t=0 with no lead-in silence, so without this the first
+  // 0.6 s of music would be clipped on every play. Rewind once, on first play only,
+  // and only from inside the fragment window so a deliberate seek is never yanked back.
+  const film = document.querySelector('.film-card video');
+  if (film) {
+    film.addEventListener('play', function rewindOnce() {
+      film.removeEventListener('play', rewindOnce);
+      if (film.currentTime > 0 && film.currentTime < 1) film.currentTime = 0;
+    });
+  }
 </script>
 </body>
 </html>
