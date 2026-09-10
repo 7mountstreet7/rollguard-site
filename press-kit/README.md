@@ -6,11 +6,11 @@ Files linked from /press.html:
 - `wordmark.png` — Wordmark — ✓ in repo
 - `panels-v5.zip` — App Store screenshot set: 7 panels (1284×2778) plus the App Preview poster frame (886×1920) — ✓ in repo. Supersedes `panels-v4.zip`, which was retired and deleted 2026-09-10 because its closer panel still read "iOS 17+".
 - `screenshots-v5.zip` — Raw app screenshots, 7 device captures — ✓ in repo. Supersedes `screenshots-v3.zip`, which was retired and deleted 2026-09-10 because its results screen still showed the superseded demo figures (4,298 / 48) and the pre-fix category order.
-- `rollguard-preview-29s.mp4` — App preview film, 29s, silent — ✓ in repo (also plays on the index page)
+- `rollguard-preview.mp4` — App preview film, silent — ✓ in repo. **This is the ASC App Preview cut**: silent, accepted by App Review, and never re-opened. Renamed from `rollguard-preview-29s.mp4` in 2c27b28 when duration came off the label; the row was not updated at the time and said the old name until 2026-09-11.
 - `rollie.png` — Rollie the RollGuard mascot — ✓ in repo
-- `rgm007.png` — Campaign creative sample — ✓ in repo
-
-Also in this folder, not linked from the press page: `rgm005.png`, `rgm006.png` — campaign creative samples from the same set as `rgm007.png`.
+- `rgm005.png` — Campaign creative sample 1 — ✓ in repo
+- `rgm006.png` — Campaign creative sample 2 — ✓ in repo
+- `rgm007.png` — Campaign creative sample 3 — ✓ in repo
 - `founder-photo.jpg` — Founder photo, David on the oyster lease — ✓ in repo
 
 David adds files via GitHub web (Add file → Upload files) or by copying them in locally; filenames must match exactly, case-sensitive — lowercase extensions.
