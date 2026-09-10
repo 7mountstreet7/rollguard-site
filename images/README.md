@@ -10,4 +10,4 @@ David adds images via GitHub web (Add file → Upload files) or by copying them 
 
 Photos are committed EXIF-stripped: GPS, device, and capture metadata removed losslessly before publish (image bytes untouched). `about-on-the-water.jpg` arrived 2026-09-01 with GPS embedded and was stripped in-repo.
 
-Campaign artwork, including the Rollie mascot, is AI-generated and carries embedded C2PA (Content Credentials) provenance. The photographs are not.
+Three kinds of image live in this repo. Campaign artwork, including the Rollie mascot, is AI-generated and carries embedded C2PA (Content Credentials) provenance. Product screenshots carry a C2PA tool-handling marker, which is not a generation claim. Photographs carry neither, and are EXIF-stripped before publish.
