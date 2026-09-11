@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility — RollGuard</title>
+<meta name="description" content="How RollGuard supports VoiceOver, Dynamic Type, Reduce Motion and system appearance — what we do, what we have not done, and how to tell us about a problem.">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#3d514c;
+    --paper:#EEF2F0;
+    --card:#FFFFFF;
+    --teal:#0F6E56;
+    --teal-deep:#0A4E3E;
+    --mint:#DCEEE7;
+    --line:#D8DFDC;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal-deep);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 96px;}
+  nav{max-width:720px;margin:0 auto;padding:28px 24px 0;}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .updated{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
+    background:var(--mint);display:inline-block;padding:5px 12px;border-radius:999px;
+    margin:40px 0 18px;
+  }
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4.4vw,38px);
+    letter-spacing:-0.02em;margin:0 0 8px;}
+  .lede{color:var(--ink-soft);font-size:16px;max-width:56ch;margin:0 0 48px;}
+  h2{font-family:var(--font-display);font-weight:700;font-size:19px;margin:44px 0 12px;}
+  p{color:var(--ink-soft);font-size:15.5px;margin:0 0 14px;}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;margin:20px 0;}
+  .card p{margin:0;}
+  ul{color:var(--ink-soft);font-size:15.5px;padding-left:20px;margin:0 0 14px;}
+  li{margin-bottom:6px;}
+  .mail-link{font-family:var(--font-mono);font-size:15.5px;color:var(--teal-deep);text-decoration:none;font-weight:500;}
+  .mail-link:hover{text-decoration:underline;}
+  footer{padding:40px 0 0;border-top:1px solid var(--line);margin-top:56px;
+    font-size:13.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav><a class="brand" href="/">Roll<span>Guard</span></a></nav>
+
+<div class="wrap">
+  <span class="updated">last updated · 11 September 2026</span>
+  <h1>Accessibility</h1>
+  <p class="lede">What RollGuard does to be usable with iOS's accessibility features — and what we haven't done.</p>
+
+  <h2>In the app</h2>
+  <p>RollGuard is built with the standard iOS interface components, so it inherits the system's accessibility behaviour rather than reimplementing it. Specifically:</p>
+  <ul>
+    <li><strong>VoiceOver.</strong> Controls carry labels, and the ones whose purpose isn't obvious from the label carry a hint as well. Where a control sits next to a count — "398 checked · 6 flagged" — the label reads the numbers and the hint gives the action, so a VoiceOver user hears the same information a sighted user sees rather than just the button name.</li>
+    <li><strong>Dynamic Type.</strong> Text scales with your iPhone's text-size setting; RollGuard never opts out of scaling. Where a large text size has pushed a control off screen, we've treated that as a bug and fixed it.</li>
+    <li><strong>Reduce Motion.</strong> If Reduce Motion is on, RollGuard's animated progress indicator stops animating and shows a static form instead. The app reads the setting at launch and follows it if you change it while the app is open.</li>
+    <li><strong>Appearance.</strong> The app follows your system light or dark setting.</li>
+  </ul>
+
+  <h2>On this website</h2>
+  <p>The site is plain HTML with no third-party scripts. Text scales with your browser's text-size setting, the film is click-to-play rather than autoplaying, and animation is suppressed when your browser reports a Reduce Motion preference.</p>
+
+  <h2>What we haven't done</h2>
+  <p>We have not carried out a formal accessibility audit, and we don't claim conformance to a particular standard or level. RollGuard is made by one person, and stating a conformance level we haven't independently tested against would be a claim we can't support. What's described above is what the app and site actually do; it isn't a certification, and it isn't exhaustive.</p>
+  <p>We also know of no way to make one part of the app fully accessible: reviewing a flagged photo means looking at the photo. VoiceOver will read the category, the reason and the masked fragment RollGuard stored, and the Keep, Hide and Delete controls are fully labelled — but the image itself is not described, because RollGuard never analyses image content beyond the checks it runs on your device.</p>
+
+  <h2>Telling us about a problem</h2>
+  <p>If something in RollGuard or on this site doesn't work with an accessibility feature you rely on, please email <a href="mailto:support@rollguard.app">support@rollguard.app</a> and say which feature and which screen. It goes to the person who wrote the app. We'll tell you honestly whether we can fix it and roughly when.</p>
+</div>
+
+<footer>
+    © 2026 RollGuard — <a href="/">back to home</a> · <a href="/accessibility.html">Accessibility</a> · <a href="/press.html">Press</a> · <a href="https://x.com/rollguardapp" target="_blank" rel="noopener">X</a> · <a href="https://instagram.com/rollguardapp" target="_blank" rel="noopener">Instagram</a> · <a href="https://tiktok.com/@rollguardapp" target="_blank" rel="noopener">TikTok</a> · <a href="https://youtube.com/@rollguardapp" target="_blank" rel="noopener">YouTube</a>
+  </footer>
+</div>
+
+</body>
+</html>
