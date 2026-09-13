@@ -108,3 +108,26 @@ drafts/
 # --- Tooling (none today; guard in case any is added) -----------------------
 node_modules/
 .cache/
+
+# --- Outreach, correspondence and working documents -------------------------
+# PRESS_OUTREACH_EMAILS.txt — 43 KB naming sixteen journalists and the angle
+# used on each — sat untracked in this root on 2026-09-13. NOTHING HERE CAUGHT
+# IT: the first pass covered images, archives and secrets, and a .txt at the
+# repo root is SERVED, so `git add -A` would have published the entire press
+# strategy at rollguard.app/PRESS_OUTREACH_EMAILS.txt.
+# robots.txt is excepted — the one .txt a static site legitimately serves.
+*.txt
+!robots.txt
+*.eml
+*.msg
+*.docx
+*.doc
+*.rtf
+*.pages
+*.odt
+# Name-based, so a future PRESS_OUTREACH.md or pitch-list.html is caught too —
+# the hazard is the CONTENT, and it does not always arrive as a .txt.
+*outreach*
+*OUTREACH*
+*pitch*
+*PITCH*
