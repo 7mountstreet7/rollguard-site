@@ -1,0 +1,110 @@
+# rollguard-site — everything committed here is served publicly at rollguard.app.
+#
+# This file is not about keeping the tree tidy. It is about keeping working files
+# off a public URL. Added 2026-09-12, after devpost-gallery/ (17 working images,
+# including an uncropped founder photo) and Apple's marketing-tools zip sat
+# untracked in this tree on a day `git add -A` was being run here.
+#
+# NOTE ON SCOPE: .gitignore governs `git add` on this machine. It does NOT
+# govern uploads made through the GitHub web UI (Add file -> Upload files),
+# which is the other way images reach this repo. That path stays a human check.
+
+# --- Devpost / marketing working sets ---------------------------------------
+devpost-gallery/
+*-3x2.*
+
+# --- Archives ---------------------------------------------------------------
+# A zip is invisible to every text-level check this project runs: the A7 floor
+# sweep recorded "full-site grep: zero 'iOS 17' remains" — true of every text
+# file and false of the repo, because panels-v4.zip served a stale "iOS 17+"
+# closer from the live press page for eleven days.
+# The press kit's own zips are published deliberately — excepted below.
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.tgz
+!press-kit/*.zip
+
+# --- Camera originals and raw/working image formats -------------------------
+# Published photos are committed EXIF-stripped (images/README.md). These
+# formats are never published and carry full capture metadata by default —
+# about-on-the-water.jpg arrived 2026-09-01 with GPS embedded.
+# .jpg/.png are deliberately NOT ignored: they are the published formats.
+*.heic
+*.HEIC
+*.heif
+*.HEIF
+*.dng
+*.DNG
+*.cr2
+*.CR2
+*.nef
+*.NEF
+*.arw
+*.ARW
+*.tif
+*.TIF
+*.tiff
+*.TIFF
+*.psd
+*.PSD
+*.ai
+*.sketch
+*.fig
+*.xcf
+
+# --- Screen recordings and working video ------------------------------------
+# Published video is .mp4 (press-kit/rollguard-preview*.mp4). Screen recordings
+# come off the iPhone as .mov and are capture working files.
+*.mov
+*.MOV
+*.m4v
+*.M4V
+*.avi
+
+# --- Secrets ----------------------------------------------------------------
+# There is no server and no build step, so nothing here should ever need one.
+# A file that did would be served as plain text at a public URL.
+.env
+.env.*
+*.pem
+*.key
+*.p8
+*.p12
+*.mobileprovision
+*.keystore
+secrets.*
+
+# --- OS and editor cruft ----------------------------------------------------
+# .DS_Store is not merely noise: it lists directory contents, including files
+# since deleted, and would be readable at rollguard.app/.DS_Store.
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Scratch, drafts, backups -----------------------------------------------
+scratch/
+tmp/
+temp/
+drafts/
+*-draft.*
+*-wip.*
+*.bak
+*.orig
+*.rej
+*.log
+
+# --- Tooling (none today; guard in case any is added) -----------------------
+node_modules/
+.cache/
