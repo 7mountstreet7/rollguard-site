@@ -64,16 +64,7 @@
     margin:0 0 22px;max-width:16ch;
   }
   .lede{font-size:18px;color:var(--ink-soft);max-width:46ch;margin:0 0 34px;}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-  .btn{
-    font-family:var(--font-body);font-weight:600;font-size:15px;
-    padding:13px 22px;border-radius:10px;text-decoration:none;display:inline-block;
-    border:1.5px solid transparent;cursor:pointer;
-  }
-  .btn-primary{background:var(--ink);color:#fff;}
-  .btn-primary:hover{background:var(--teal-deep);}
-  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
-  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);}
+  .hero-secondary{font-size:15px;margin:14px 0 0;}
   .trust-line{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);margin-top:16px;}
   .trust-line span{margin:0 4px;}
   /* Official Apple "Download on the App Store" badge, INLINED VERBATIM from Apple's
@@ -84,13 +75,19 @@
      recolour, stretch, rotation, animation or added effects, and never a recreation.
      THE SVG MARKUP BELOW IS NOT EDITED: all sizing is CSS, which sits outside the artwork.
      height + width:auto scales against the file's own viewBox ratio, so it is never
-     stretched. The margins are the required CLEAR SPACE - Apple's minimum is one-quarter
-     of the badge height (48 -> 12px, 40 -> 10px). The artwork does NOT carry clear space
-     of its own; it is provided here, so do not remove these margins. */
+     stretched. CLEAR SPACE - Apple's minimum is one-quarter of the badge height
+     (56 -> 14px, 40 -> 10px). The artwork does NOT carry clear space of its own, so
+     layout must provide it, and each side's source is load-bearing:
+       hero (56px): top = .lede margin-bottom 34px; bottom = .trust-line margin-top 16px;
+         left = .wrap 24px gutter; right = own 14px margin. Shrinking any of those
+         below 14px violates Apple's clear-space minimum.
+       card/closing (40px): the 22px/10px margins below (left side: card padding /
+         centered layout provides >= 10px).
+     Do not remove these margins. */
   .store-badge{display:inline-block;line-height:0;}
   .store-badge svg{display:block;height:40px;width:auto;}
-  .store-badge--hero svg{height:48px;}
-  .store-badge--hero{margin:22px 12px 12px 0;}
+  .store-badge--hero svg{height:56px;}
+  .store-badge--hero{margin:0 14px 0 0;}
   .store-badge--card{margin:22px 10px 10px 0;}
   .store-badge--closing{margin:22px 10px 10px;}
   .store-badge.soon{background:var(--card);color:var(--ink-soft);border:1.5px solid var(--line);cursor:default;}
@@ -301,11 +298,6 @@
     <span class="eyebrow">iOS 26+ · fully on-device</span>
     <h1>Know what's hiding in your camera roll — before you hand over your phone.</h1>
     <p class="lede">RollGuard scans your photos for identity documents like passports and driver's licences, payment cards, screenshots of old passwords and credentials, and sensitive images, without any of it ever leaving your phone.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#how">See how it works</a>
-      <a class="btn btn-ghost" href="#faq">Read the honest answers →</a>
-    </div>
-    <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
     <a class="store-badge store-badge--hero" href="https://apps.apple.com/app/rollguard/id6792159185" target="_blank" rel="noopener" aria-label="Download RollGuard on the App Store">
       <svg id="livetype" xmlns="http://www.w3.org/2000/svg" width="119.66407" height="40" viewBox="0 0 119.66407 40">
         <title>Download_on_the_App_Store_Badge_US-UK_RGB_blk_4SVG_092917</title>
@@ -354,6 +346,8 @@
         </g>
       </svg>
     </a>
+    <p class="trust-line">Free to try<span>·</span>No account<span>·</span>Nothing ever uploaded</p>
+    <p class="hero-secondary"><a href="#how">See how it works</a></p>
     <div class="grid-demo">
       <div class="grid-demo-label">
         <span>your camera roll — a demo</span>
