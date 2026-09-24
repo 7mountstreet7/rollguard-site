@@ -1,0 +1,11 @@
+# rollguard.app
+# Policy (owner decision, 2026-09-25): all crawlers are welcome — search engines,
+# AI search and assistant crawlers, and training crawlers (GPTBot, ClaudeBot,
+# PerplexityBot, Google-Extended and the rest). This is a public marketing site;
+# being read, indexed, cited and answered from is the point. Nothing on this
+# origin needs protecting. The 404 page carries its own meta noindex.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://rollguard.app/sitemap.xml

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- loc-only by decision (2026-09-25): a hand-maintained lastmod on a hand-edited
+     static site drifts silently; per-page freshness lives in each page's visible
+     "Last updated" line and its Article dateModified, which the editing discipline
+     re-cuts together with the copy. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://rollguard.app/</loc></url>
+  <url><loc>https://rollguard.app/about.html</loc></url>
+  <url><loc>https://rollguard.app/press.html</loc></url>
+  <url><loc>https://rollguard.app/privacy.html</loc></url>
+  <url><loc>https://rollguard.app/terms.html</loc></url>
+  <url><loc>https://rollguard.app/accessibility.html</loc></url>
+  <url><loc>https://rollguard.app/guides/before-you-sell-or-trade-in-your-iphone.html</loc></url>
+  <url><loc>https://rollguard.app/guides/can-border-officers-search-my-phone.html</loc></url>
+  <url><loc>https://rollguard.app/guides/is-public-phone-charging-safe.html</loc></url>
+  <url><loc>https://rollguard.app/guides/should-i-delete-photos-of-my-id.html</loc></url>
+  <url><loc>https://rollguard.app/guides/whats-in-my-camera-roll-that-ive-forgotten.html</loc></url>
+  <url><loc>https://rollguard.app/guides/who-can-see-my-photos-when-i-hand-over-my-phone.html</loc></url>
+</urlset>
