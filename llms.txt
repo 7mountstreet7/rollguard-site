@@ -1,0 +1,72 @@
+# RollGuard
+
+> RollGuard is an iOS privacy app that checks your camera roll for things you may have forgotten are there — identity documents, payment cards, passwords and credentials, and sensitive images. Analysis happens entirely on the iPhone, with no photo uploads and no account required.
+
+## Product
+
+- [Home](https://rollguard.app/): Official RollGuard website. Overview of RollGuard's private, on-device camera roll scanning.
+
+- [About](https://rollguard.app/about.html): Background on RollGuard, why it was created, and its on-device privacy approach.
+
+- [Press](https://rollguard.app/press.html): Press resources, product information, founder background, and media information for RollGuard.
+
+- [Honest answers — FAQ](https://rollguard.app/#faq): Direct answers about what RollGuard stores, what it can't check, what it misses, and how scanning works.
+
+## What RollGuard Checks
+
+RollGuard checks an iPhone photo library for four main categories:
+
+- Identity documents — including passports, driver licences, and other identity documents.
+- Payment cards — including photographs of credit and debit cards.
+- Secrets and credentials — including passwords, credentials, and other sensitive information captured in photos or screenshots.
+- Sensitive images — personal images the user may want to review.
+
+RollGuard identifies photos that may deserve the user's attention. The user decides what action, if any, to take.
+
+## Privacy
+
+RollGuard is designed around on-device processing.
+
+- Photo analysis happens on the user's iPhone.
+- Photos are not uploaded to RollGuard for analysis.
+- Checking photos stored only in iCloud downloads the user's own originals to the phone over Wi-Fi — a download only; nothing is sent back.
+- No RollGuard account is required.
+- RollGuard does not require a server to analyse the user's camera roll.
+- The user remains in control of their photos and scan results.
+
+## Pricing
+
+- RollGuard is free to download. The free scan checks the last 30 days of the camera roll completely, and keeps a running count of what's flagged across the rest of the library.
+- RollGuard Pro (US$19.99 one-time, shown in the user's local currency on the App Store — no subscription, ever) opens the review queue for everything flagged: see every item and keep, hide, or delete each one.
+
+## Guides
+
+- [Should I Delete Photos of My ID?](https://rollguard.app/guides/should-i-delete-photos-of-my-id.html): Guidance on keeping photographs of identity documents in a camera roll and factors to consider when deciding whether they are still needed.
+
+- [Can Border Officers Search My Phone?](https://rollguard.app/guides/can-border-officers-search-my-phone.html): Information about border searches of phones and why travellers may want to understand what is stored in their camera roll before travelling.
+
+- [What's in My Camera Roll That I've Forgotten?](https://rollguard.app/guides/whats-in-my-camera-roll-that-ive-forgotten.html): Examples of private or sensitive material that can remain forgotten in a photo library long after the original reason for taking the photo has passed.
+
+- [Before You Sell or Trade In Your iPhone](https://rollguard.app/guides/before-you-sell-or-trade-in-your-iphone.html): Things to consider before selling, trading in, or transferring an iPhone, including forgotten sensitive material in the photo library.
+
+- [Is Public Phone Charging Safe?](https://rollguard.app/guides/is-public-phone-charging-safe.html): Information about public phone charging and relevant privacy and security considerations.
+
+- [Who Can See My Photos When I Hand Over My Phone?](https://rollguard.app/guides/who-can-see-my-photos-when-i-hand-over-my-phone.html): Privacy considerations when temporarily handing an unlocked phone to another person.
+
+## Download
+
+- [RollGuard on the App Store](https://apps.apple.com/app/rollguard/id6792159185): Official App Store listing for RollGuard for iPhone.
+
+## Legal
+
+- [Privacy Policy](https://rollguard.app/privacy.html): RollGuard's privacy policy and information about data handling.
+
+- [Terms of Use](https://rollguard.app/terms.html): Terms governing use of RollGuard.
+
+- [Accessibility](https://rollguard.app/accessibility.html): Accessibility information for RollGuard.
+
+## Official Links
+
+- [Official Website](https://rollguard.app/)
+- [App Store](https://apps.apple.com/app/rollguard/id6792159185)
+- [Press Kit](https://rollguard.app/press.html)

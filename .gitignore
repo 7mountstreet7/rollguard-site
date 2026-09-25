@@ -115,9 +115,13 @@ node_modules/
 # IT: the first pass covered images, archives and secrets, and a .txt at the
 # repo root is SERVED, so `git add -A` would have published the entire press
 # strategy at rollguard.app/PRESS_OUTREACH_EMAILS.txt.
-# robots.txt is excepted — the one .txt a static site legitimately serves.
+# robots.txt and llms.txt are excepted — the .txt files a static site
+# legitimately serves (llms.txt owner-approved 2026-09-25, reversing that
+# morning's decline; every line in it is a governed claim, registered as a
+# swept surface in the app repo).
 *.txt
 !robots.txt
+!llms.txt
 *.eml
 *.msg
 *.docx
